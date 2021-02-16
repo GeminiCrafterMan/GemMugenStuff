@@ -15182,6 +15182,7 @@ trigger6 = Enemynear, Name = "RockmanX"
 trigger7 = Enemynear, Name = "MegamanX"
 trigger8 = Enemynear, Name = "RMXD-X"
 trigger9 = Enemynear, Name = "Megaman X Unlimited Potential"
+trigger10 = Enemynear, Name = "X (Gemini0 Edit)"
 value = 21
 
 [State -2, MMZ Zero]
@@ -15215,7 +15216,7 @@ trigger4 = Enemynear, Name = "Maverick Hunter Zero"
 trigger5 = Enemynear, Name = "Zero" && Enemynear, Authorname != "N64Mario" && Enemynear, Authorname != "aznperson569M"
 trigger6 = Enemynear, Name = "RMX6-Zero"
 trigger7 = Enemynear, Name = "RMX8-Zero"
-trigger8 = Enemynear, Name = "Zero (Gemini Edit)"
+trigger8 = Enemynear, Name = "Zero (Gemini0 Edit)"
 value = 24
 
 [State -2, Shovel Knight]
@@ -15464,6 +15465,7 @@ type = VictoryQuote
 trigger1 = Enemynear, Name = "X1 Zero"
 trigger2 = Enemynear, Name = "Zero-X1"
 trigger3 = Enemynear, Name = "Zero First"
+trigger4 = Enemynear, Name = "Zero (Gemini Edit)"	; vs. old versions of this. idk why lol
 value = 60
 
 [State -2, Copy X]
@@ -15506,6 +15508,7 @@ value = 65
 type = VictoryQuote
 trigger1 = Enemynear, Name = "x" && Enemynear, Authorname = "\B1ٻ\EE - JOJO Fu"
 trigger2 = Enemynear, Name = "Shadow Armor X"
+trigger3 = Enemynear, Name = "sx"
 value = 66
 
 [State -2, Force/Fourth Armor X]

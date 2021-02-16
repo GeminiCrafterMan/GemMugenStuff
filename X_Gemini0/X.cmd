@@ -32,13 +32,13 @@ time = 30
 
 [Command]
 name = "Hadouken"
-command = ~D, DF, F, x
-time = 30
+command = ~D, DF , F, x
+time = 22
 
 [Command]
 name = "Shoryuken"     ;Required (do not remove)
-command = ~D, DF, F, DF, F, x
-time = 30
+command = ~F, D , DF, x
+time= 17
 
 [Command]
 name = "a+b"
@@ -590,28 +590,6 @@ trigger3 = StateNo = 637
 trigger4 = StateTime > 0
 trigger4 = Var(15) > 0
 trigger4 = Random <= 155
-ignorehitpause = 1
-
-; Dash Slash
-[State -1, Run Slash]
-type = ChangeState
-value = 110
-triggerall = var(59)!= 1
-trigger1 = command = "y"
-trigger1 = StateNo = 100
-trigger1 = ctrl
-
-[State -1, AI]
-type = ChangeState
-value = 110
-triggerall = !Win
-triggerall = var(59)
-triggerall = P2BodyDist X <= 320
-trigger1 = StateNo = 103
-trigger1 = StateNo != 110
-trigger1 = ctrl
-trigger2 = Var(15) > 0
-trigger2 = Random <= 60
 ignorehitpause = 1
 
 ; Dash Kick
