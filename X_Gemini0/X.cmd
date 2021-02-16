@@ -472,7 +472,7 @@ trigger2 = Random <= 100
 ignorehitpause = 1
 
 ;Final Sword Atk
-[State -1, Stand Final Sword Atk]
+[State -1, Genmurei]
 type = ChangeState
 value = 1200
 triggerall = var(59)!= 1
@@ -748,10 +748,10 @@ trigger1 = Var(15) > 0
 trigger1 = Random <= 20
 ignorehitpause = 1
 
-;Stand Z-Sabre 1
-[State -1, Stand Z-Sabre 1]
+;Stand Z-Saber
+[State -1, Stand Z-Saber]
 type = ChangeState
-value = 230
+value = 232
 triggerall = Var(20) >= 0
 triggerall = var(59)!= 1
 triggerall = command = "y"
@@ -761,130 +761,13 @@ trigger2 = Var(15) > 0
 
 [State -1, AI]
 type = ChangeState
-value = 230
+value = 232
 triggerall = var(59)
 triggerall = !Win
 triggerall = P2BodyDist X <= 24
 triggerall = statetype = S
 trigger1 = ctrl
 trigger1 = Random <= 35
-
-;Stand Z-Sabre 2
-[State -1, Stand Z-Sabre 2]
-type = ChangeState
-value = 231
-triggerall = Var(20) >= 0
-triggerall = var(59)!= 1
-triggerall = command = "y"
-triggerall = StateType = S
-trigger1 = StateNo = 230
-trigger1 = Anim = 230
-trigger1 = AnimElem = 4, >= 0
-trigger2 = StateNo = 230
-trigger2 = statetime > 0
-trigger2 = Var(15) > 0
-ignorehitpause = 1
-
-[State -1, AI]
-type = ChangeState
-value = 231
-triggerall = var(59)
-triggerall = !Win
-triggerall = P2BodyDist X <= 30
-triggerall = statetype = S
-trigger1 = StateNo = 230
-trigger1 = Anim = 230
-trigger1 = AnimElem = 3, >= 0
-trigger2 = StateNo = 230
-trigger2 = StateTime > 0
-trigger2 = Var(15) > 0
-trigger2 = Random <= 20
-ignorehitpause = 1
-
-;Stand Z-Sabre 3
-[State -1, Stand Z-Sabre 3]
-type = ChangeState
-value = 232
-triggerall = var(59)!= 1
-triggerall = command = "y"
-triggerall = command != "holddown"
-triggerall = StateType = S
-trigger1 = StateNo = 231
-trigger1 = Anim = 231
-trigger1 = AnimElem = 3, >= 0
-trigger2 = StateNo = 231
-trigger2 = statetime > 0
-ignorehitpause = 1
-
-[State -1, AI]
-type = ChangeState
-value = 232
-triggerall = var(59)
-triggerall = !Win
-triggerall = P2BodyDist X <= 30
-triggerall = statetype = S
-trigger1 = StateNo = 231
-trigger1 = Anim = 231
-trigger1 = AnimElem = 3, >= 0
-trigger2 = StateNo = 231
-trigger2 = StateTime > 0
-trigger2 = Var(15) > 0
-trigger2 = Random <= 3
-ignorehitpause = 1
-
-;Stand Z-Sabre 4
-[State -1, Stand Z-Sabre 4]
-type = ChangeState
-value = 233
-triggerall = var(59)!= 1
-triggerall = command = "y" && command = "holddown"
-triggerall = StateType != A
-trigger1 = StateNo = 231
-trigger1 = Anim = 231
-trigger1 = AnimElem = 3, >= 0
-trigger2 = StateNo = 231
-trigger2 = statetime > 0
-ignorehitpause = 1
-
-[State -1, AI]
-type = ChangeState
-value = 233
-triggerall = var(59)
-triggerall = !Win
-triggerall = P2BodyDist X <= 30
-triggerall = statetype = S
-trigger1 = StateNo = 231
-trigger1 = Anim = 231
-trigger1 = AnimElem = 3, >= 0
-trigger2 = StateNo = 231
-trigger2 = StateTime > 0
-trigger2 = Var(15) > 0
-trigger2 = Random <= 10
-ignorehitpause = 1
-
-;Stand Charged Saber
-[State -1, Charged Saber]
-type = ChangeState
-value = 237
-triggerall = var(59)!= 1
-triggerall = Var(20) >= 0
-triggerall = command != "hold_y"
-triggerall = var(18) > 120
-triggerall = statetype = S
-trigger1 = ctrl
-trigger2 = Var(15) > 0
-
-[State -1, AI]
-type = ChangeState
-value = 237
-triggerall = var(18) >= 120
-triggerall = var(59)
-triggerall = !Win
-triggerall = P2BodyDist X <= 25
-triggerall = statetype = S
-trigger1 = ctrl
-trigger2 = Var(15) > 0
-trigger2 = Random <= 50
 
 ;Fourth (Force) Strike
 [State -1, Stand Fourth (Force) Strike]
@@ -1600,44 +1483,6 @@ trigger1 = StateNo = 640
 trigger1 = Anim = 640
 trigger1 = AnimElem = 3, >= 0
 trigger2 = StateNo = 640
-trigger2 = StateTime > 0
-trigger2 = Var(15) > 0
-trigger2 = Random <= 200
-ignorehitpause = 1
-
-;Air Z-Sabre
-[State -1, Jump Z-Sabre]
-type = ChangeState
-value = 635
-triggerall = var(59)!= 1
-triggerall = command = "hold_y" && command = "holddown"
-trigger1 = statetype = A
-trigger1 = ctrl
-
-;Air Z-Sabre 2
-[State -1,Air Z-Sabre 2]
-type = ChangeState
-value = 637
-triggerall = var(59)!= 1
-triggerall = command = "y"
-triggerall = StateType = A
-trigger1 = StateNo = 630
-trigger1 = Anim = 630
-trigger2 = StateNo = 630
-trigger2 = statetime > 0
-ignorehitpause = 1
-
-[State -1, AI]
-type = ChangeState
-value = 637
-triggerall = !Win
-triggerall = var(59)
-triggerall = P2BodyDist X <= 20
-triggerall = statetype = A
-trigger1 = StateNo = 630
-trigger1 = Anim = 630
-trigger1 = AnimElem = 5, >= 0
-trigger2 = StateNo = 630
 trigger2 = StateTime > 0
 trigger2 = Var(15) > 0
 trigger2 = Random <= 200
