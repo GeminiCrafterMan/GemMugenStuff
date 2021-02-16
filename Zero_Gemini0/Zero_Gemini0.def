@@ -1,0 +1,42 @@
+;***************************************************************************;
+;******************* Created in Fighter Factory Ultimate *******************;
+;*******************      http://www.virtualltek.com     *******************;
+;***************************************************************************;
+
+[Info]
+name = "Zero (Gemini0 Edit)"
+displayname = "Zero"
+versiondate = 15,02,2021
+mugenversion = 1.0
+author = "Gemini0" ; original authors: Ariel AleX Co. & RedLine
+pal.defaults = 1,9,8 ; normal / omega / nightmare
+
+[Files]
+sprite = zero.sff
+anim = zero.air
+sound = zero.snd
+cmd = zero.cmd
+cns = zero.cns
+stcommon = common1.cns
+st = zero.cns
+st2 = Zero-Buster.cns
+;st3 = config.txt
+st4 = OZero Taunt.cns
+;st5 = Ranbu Fuckery.cns
+;st6 = stand_normal.cns
+;st7 = Stand.cns
+st8 = Aura Bullshit.cns
+movelist = movelist.dat     ;Ikemen feature: Movelist
+
+pal1 = act/Original Palettes/ZeroALL.act
+pal2 = act/Custom Functions/black_armor.act
+pal3 = act/Color Swaps/SaberZeroInvert.act
+pal4 = act/Color Swaps/ZeroPurple.act   ; how will i do this
+pal5 = act/Color Swaps/ZeroYellow.act   ; ???
+pal6 = act/Color Swaps/ZeroBlue.act     ; ehhh...
+pal7 = act/Color Swaps/ZeroGold.act     ; ???
+pal8 = act/Custom Functions/nightmare_zero.ACT
+pal9 = act/Custom Functions/omega_zero.act
+pal10 = act/Color Swaps/ZeroB&W.ACT
+pal11 = act/Color Swaps/ZeroCyan.act    ; looks bad, redo it
+pal12 = act/Custom Functions/absolute_zero.act

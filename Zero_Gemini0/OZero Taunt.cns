@@ -1,0 +1,855 @@
+;---------------------------------------------------------------------------
+; Taunt (Normal Stand)
+[Statedef 9994]
+type = S
+ctrl = 0
+velset = 0,0
+movetype = I
+physics = S
+sprpriority = 2
+
+[State 9995, Anim]
+type = ChangeAnim
+trigger1 = Time <= 0
+trigger1 = Anim != 9995
+trigger2 = Anim = 9995
+trigger2 = AnimElem = 10, < 0
+value = 9995
+elem = 11
+
+[State 9995, State]
+type = ChangeState
+triggerall = Time > 0
+trigger1 = Var(54) <= 0
+trigger1 = AnimTime = 0
+trigger2 = Var(54) > 0
+trigger2 = AnimElem = 5, > 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+; Taunt (Upright Stand)
+[Statedef 9995]
+type = S
+ctrl = 0
+velset = 0,0
+movetype = I
+physics = S
+sprpriority = 2
+
+[State 9995, Anim]
+type = ChangeAnim
+trigger1 = Time <= 0
+trigger1 = Anim != 9995
+value = 9995
+elem = 1
+
+[State 9995, Helper]
+type = Helper
+trigger1 = NumHelper(1370)<=0
+trigger1 = var(20) >= 0 && var(57) = 1
+trigger1 = Time <= 0
+helpertype = normal
+name = "Dark Shield"
+size.ground.back = 0
+size.ground.front = 0
+size.air.back = 0
+size.air.front = 0
+id = 1370
+pos = 0, ceil(-17 * const(size.yscale))
+postype = P1
+stateno = 1370
+keyctrl = 0
+;pausemovetime = 12
+ownpal = 1
+
+[State 9995, State]
+type = ChangeState
+triggerall = Time > 0
+trigger1 = Var(54) <= 0
+trigger1 = AnimTime = 0
+trigger2 = Var(54) > 0
+trigger2 = AnimElem = 5, > 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+; Powering Up
+;[Statedef 576]
+;type = S
+;movetype = A
+;velset = 0,0
+;ctrl = 0
+;
+;[State 576, VarSet]
+;type = VarSet
+;trigger1 = Time > 100
+;var(56) = 1
+;
+;[State 576, Intro]
+;type = AssertSpecial
+;trigger1 = 1
+;flag = Intro
+;
+;
+;[State 576, Pause]
+;type = Pause
+;trigger1 = Time > 100
+;movetime = 2
+;time = 2
+;
+;[State 576, NotHitBy]
+;type = NotHitBy
+;trigger1 = Time > 73
+;trigger2 = var(20) < 0 && var(57) = 3
+;value = SCA
+;time = 1
+;
+;[State 576, Intro]
+;type = AssertSpecial
+;trigger1 = Time > 73
+;trigger2 = var(20) < 0 && var(57) = 3
+;flag = timerfreeze
+;ignorehitpause=1
+;
+;[State -2, HardCPU]
+;type = poweradd
+;triggerall= Name = "Omega Zero"
+;trigger1 = var(20) < 0 && var(57) = 3
+;trigger1 = roundstate = 2 && Power < PowerMax
+;trigger1 = (gametime%7)=0
+;value = 137
+;
+;[State 576, Anim]
+;type = ChangeAnim
+;trigger1 = Time <= 0
+;trigger1 = Anim != 576
+;value = 576
+;
+;[State 576, Sound]
+;type = PlaySnd
+;trigger1 = Anim = 576
+;trigger1 = AnimElem = 4
+;value = 10, 20
+;channel = 1
+;
+;[State 576, EnvColor]
+;type = EnvColor
+;trigger1 = Anim = 576
+;trigger1 = AnimElem = 4
+;trigger2 = Anim != 181
+;trigger2 = Time = 100
+;value = 250,250,250
+;ignorehitpause = 1
+;under = 0
+;time = 2
+;
+;[State 576, Sound]
+;type = PlaySnd
+;trigger1 = Anim = 576
+;trigger1 = AnimElem = 4
+;trigger2 = Anim != 181
+;trigger2 = Time = 100
+;value = 5, 10
+;channel = 2
+;
+;[State 576, Sound]
+;type = PlaySnd
+;trigger1 = Anim = 576
+;trigger1 = AnimElem = 4
+;value = 5, 5
+;channel = 3
+;loop = 1
+;
+;[State 576, Forehead light]
+;type = Explod
+;triggerall = name = "Omega Zero"
+;triggerall = (var(20) < 0 && var(57) = 3)||(var(20) >= 0 && var(57) = 1)
+;trigger1 = Time < 100
+;trigger1 = Anim = 576 && AnimElem = 5, >= 0
+;trigger1 = time%3=0;TimeMod = 3,0
+;sprpriority = 17
+;scale = const(size.xscale), const(size.yscale)
+;anim = 273
+;pos = 0,ceil(-37.7 * const(size.yscale))
+;;vel = 0,0
+;;accel = 1,0
+;supermovetime = -1
+;pausemovetime = -1
+;removeongethit = 1
+;postype = p1
+;facing = 1
+;ontop = 1
+;id = 273
+;
+;[State 576, Smoke]
+;type = Explod
+;trigger1 = Time < 100
+;trigger1 = Anim = 576
+;trigger1 = AnimElem = 5, >= 0
+;trigger1 = time%10=0;TimeMod = 10,0
+;sprpriority = 10
+;scale = const(size.xscale), const(size.yscale)
+;anim = F120
+;pos = ceil(20 * const(size.xscale)),0
+;vel = 0,0
+;accel = 1,0
+;supermovetime = -1
+;pausemovetime = -1
+;removeongethit = 1
+;postype = p1
+;facing = 1
+;ontop = 1
+;
+;[State 576, Smoke]
+;type = Explod
+;trigger1 = Time < 100
+;trigger1 = Anim = 576
+;trigger1 = AnimElem = 5, >= 0
+;trigger1 = time%10=0;TimeMod = 10,0
+;sprpriority = 10
+;scale = const(size.xscale), const(size.yscale)
+;anim = F120
+;pos = ceil(-20 * const(size.xscale)),0
+;vel = 0,0
+;accel = -1,0
+;supermovetime = -1
+;pausemovetime = -1
+;removeongethit = 1
+;postype = p1
+;facing = 1
+;ontop = 1
+;
+;[State 576, Explod]
+;type = Explod
+;trigger1 = Anim = 576
+;trigger1 = AnimElem = 5
+;trigger1 = NumExplod(266) <= 0
+;ignorehitpause = 1
+;sprpriority = 10
+;supermovetime = -1
+;pausemovetime = -1
+;removeongethit = 1
+;removetime = -1
+;scale = const(size.xscale), const(size.yscale)
+;bindtime = -1
+;postype = P1
+;ownpal = 1
+;ontop = 1
+;anim = 266
+;pos = ceil(-35 * const(size.xscale)),0
+;id = 266
+;
+;[State 576, Sound]
+;type = StopSnd
+;trigger1 = Anim != 181
+;trigger1 = Time = 100
+;channel = 3
+;
+;[State 576, RemoveExplod]
+;type = RemoveExplod
+;triggerall = NumExplod(266) > 0
+;trigger1 = Anim != 181
+;trigger1 = Time = 100
+;trigger2 = AnimTime = 0
+;trigger2 = Time > 300
+;ignorehitpause = 1
+;id = 266
+;
+;[State 576, VarSet]
+;type = VarSet
+;trigger1 = Time >= 100
+;var(55) = ifelse(Name = "Omega Zero",ifelse(var(20) >= 0 && var(57) = 1||var(20) < 0 && var(57) = 3,3175,1275),1275)
+;
+;[State 576, Explod]
+;type = Explod
+;trigger1 = Time = 100
+;trigger1 = Anim != 181
+;trigger1 = NumExplod(266) <= 0
+;ignorehitpause = 1
+;sprpriority = 10
+;supermovetime = -1
+;pausemovetime = -1
+;removeongethit = 1
+;removetime = -1
+;scale = const(size.xscale) * 1.5, const(size.yscale)
+;bindtime = -1
+;postype = P1
+;ownpal = 1
+;ontop = 1
+;anim = 266
+;pos = ceil(-53 * const(size.xscale)),0
+;id = 266
+;
+;[State 576, Explod]
+;type = Explod
+;trigger1 = Time = 100
+;trigger1 = Anim != 181
+;trigger1 = NumExplod(112) <= 0
+;sprpriority = 10
+;supermovetime = -1
+;pausemovetime = -1
+;removeongethit = 1
+;removetime = -1
+;facing = 1
+;scale = const(size.xscale) * 2, const(size.yscale)
+;postype = P1
+;ownpal = 1
+;ontop = 1
+;anim = 110
+;pos = 0,0
+;ID = 112
+;
+;[State 576, Explod]
+;type = Explod
+;trigger1 = Time = 100
+;trigger1 = Anim != 181
+;trigger1 = NumExplod(113) <= 0
+;sprpriority = 10
+;supermovetime = -1
+;pausemovetime = -1
+;removeongethit = 1
+;removetime = -1
+;facing = -1
+;scale = const(size.xscale) * 2, const(size.yscale)
+;postype = P1
+;ownpal = 1
+;ontop = 1
+;anim = 110
+;pos = 0,0
+;ID = 113
+;
+;[State 576, PalFX]
+;type = BGPalFX
+;trigger1 = Anim = 576
+;trigger1 = AnimElem = 5, >= 0
+;trigger1 = time%6=0;TimeMod = 6,0;
+;time = 3
+;add = 25,25,25
+;
+;[State 576, PalFX]
+;type = PalFX
+;trigger1 = Anim = 576
+;trigger1 = AnimElem = 5, >= 0
+;trigger1 = time%4=0;TimeMod = 4,0;
+;ignorehitpause = 1
+;time = 2
+;add = 50,50,50
+;
+;[State 576, EnvShake]
+;type = EnvShake
+;trigger1 = Anim = 576
+;trigger1 = AnimElem = 5
+;time = 100
+;freq = 50
+;ampl = -5
+;phase = 5
+;
+;[State 576, Helper]
+;type = Helper
+;triggerall = NumHelper(995) = 0
+;trigger1 = Anim != 181
+;trigger1 = Time = 100
+;helpertype = normal
+;name = "Power Up"
+;id = 995
+;pos = 0, 0
+;postype = P1
+;stateno = 990
+;pausemovetime = 1000000000
+;supermovetime = 1000000000
+;keyctrl = 0
+;
+;
+;[State 576, Helper]
+;type = Helper
+;trigger1 = name = "Omega Zero"
+;trigger1 = NumHelper(7300)=0
+;trigger1 = time<=0
+;helpertype = normal
+;name = "Breaking Rocks"
+;size.ground.back = 0
+;size.ground.front = 0
+;size.air.back = 0
+;size.air.front = 0
+;persistent = 0
+;id = 7300
+;pos = 0,0
+;postype = P1
+;stateno = 7300
+;pausemovetime = 1000000000
+;supermovetime = 1000000000
+;keyctrl = 0
+;ownpal = 1
+;
+;
+;[State 576, Anim]
+;type = ChangeAnim
+;trigger1 = Anim != 181
+;trigger1 = Time = 100
+;trigger2 = Anim = 181
+;trigger2 = AnimElem = 4, < 0
+;value = 181
+;elem = 4
+;
+;[State 576, Smoke]
+;type = Explod
+;trigger1 = Time > 100
+;trigger1 = time%5=0;TimeMod = 5,0;
+;sprpriority = 10
+;scale = const(size.xscale), const(size.yscale)
+;anim = F120
+;pos = ceil(20 * const(size.xscale)),0
+;vel = 0,0
+;accel = 2,0
+;supermovetime = -1
+;pausemovetime = -1
+;removeongethit = 1
+;postype = p1
+;facing = 1
+;ontop = 1
+;
+;[State 576, Smoke]
+;type = Explod
+;trigger1 = Time > 100
+;trigger1 = time%5=0;TimeMod = 5,0;
+;sprpriority = 10
+;scale = const(size.xscale), const(size.yscale)
+;anim = F120
+;pos = ceil(-20 * const(size.xscale)),0
+;vel = 0,0
+;accel = -2,0
+;supermovetime = -1
+;pausemovetime = -1
+;removeongethit = 1
+;postype = p1
+;facing = 1
+;ontop = 1
+;
+;[State 576, PalFX]
+;type = BGPalFX
+;trigger1 = Time > 100
+;trigger1 = time%4=0;TimeMod = 4,0;
+;trigger1 = Anim = 181
+;time = 2
+;add = 50,50,50
+;
+;[State 576, EnvShake]
+;type = EnvShake
+;trigger1 = Anim = 181
+;trigger1 = AnimElem = 4, <= 0
+;time = 100
+;freq = 100
+;ampl = -10
+;phase = 10
+;
+;[State 576, ForceFeedback]
+;type = ForceFeedback
+;trigger1 = Anim = 181
+;trigger1 = AnimElem = 4
+;waveform = "sinesquare"
+;time = 75
+;freq = 128,0,0,0
+;ampl = 128,0,0,0
+;self = 1
+;ignorehitpause = 1
+;
+;[State 576, ForceFeedback]
+;type = ForceFeedback
+;trigger1 = Anim = 181
+;trigger1 = AnimElem = 4
+;waveform = "sinesquare"
+;time = 75
+;freq = 128,0,0,0
+;ampl = 128,0,0,0
+;self = 2
+;ignorehitpause = 1
+;
+;[State 576, PalFX]
+;type = PalFX
+;trigger1 = Anim = 181
+;trigger1 = time%2=0;TimeMod = 2,0;
+;ignorehitpause = 1
+;time = 1
+;add = 100,100,100
+;
+;[State 576, RemoveExplod]
+;type = RemoveExplod
+;triggerall = NumExplod(112) > 0
+;trigger1 = AnimTime = 0
+;trigger1 = Time > 300
+;ignorehitpause = 1
+;id = 112
+;
+;[State 576, RemoveExplod]
+;type = RemoveExplod
+;triggerall = NumExplod(113) > 0
+;trigger1 = AnimTime = 0
+;trigger1 = Time > 300
+;ignorehitpause = 1
+;id = 113
+;
+;[State 576, State]
+;type = ChangeState
+;trigger1 = Time < 100
+;trigger1 = Command != "hold_x" 
+;trigger1 = var(20) >= 0
+;trigger2 = Time < 100
+;trigger2 = Command != "hold_y" 
+;trigger2 = var(20) >= 0
+;trigger3 = Time < 100
+;trigger3 = Command != "hold_z"
+;trigger3 = var(20) >= 0
+;trigger4 = Time > 300
+;trigger4 = AnimTime = 0
+;value = 0
+;ctrl = 1
+;---------------------------------------------------------------------------
+; Dark Shield
+[Statedef 1370]
+type = A
+movetype = A
+physics = N
+anim = 1370
+velset = 0, 0
+ctrl = 0
+
+[State 1370, VarSet]
+type = VarSet
+trigger1 = Time <= 0
+fv = 0
+value = 0
+
+[State 1370, VarSet]
+type = VarSet
+trigger1 = Time <= 0
+v = 1
+value = 0
+
+[State 1370, VarAdd]
+type = VarAdd
+trigger1 = fvar(0) < 1
+fv = 0
+value = 0.05
+
+[State 1370, VarAdd]
+type = VarAdd
+trigger1 = var(1) < 221
+v = 1
+value = 14
+
+[State 1370, AngleDraw]
+type = AngleDraw
+trigger1 = anim != 1371
+scale = FVar(0), FVar(0)
+ignorehitpause =1
+
+[State 1370, Trans]
+type = Trans
+trigger1 = Time > 14
+trigger1 = anim != 1371
+;trigger2 = Time%3=0
+;trigger2 = anim = 1371
+ignorehitpause = 1
+trans = addalpha
+alpha = Var(1), Var(1)
+ignorehitpause=1
+
+[State 1370, AssertSpecial]
+type = AssertSpecial
+trigger1 = anim = 1371
+flag = invisible
+
+[State 1370, PalFXWiz]
+type = null;PalFX
+trigger1 = 1
+time = 1
+invertall = 1
+
+[State 1370, BindToParent]
+type = BindToRoot
+trigger1 = 1
+facing = 1
+pos = 0, ceil(-17 * const(size.yscale))
+time = 1
+
+[State 1370, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+ignorehitpause = 1
+value = SCA
+time = 1
+
+[State 1370, ChangeAnim]
+type = ChangeAnim
+trigger1 = Time >= 3 && anim != 1371
+trigger1 = Root,Var(45)=97||Root,Var(46)=97
+trigger1 = Root,Stateno!=[2000,3700]
+;trigger2 = Root,Stateno=5002&&Root,Time > 0
+;trigger2 = Root,Vel Y >= 0
+;trigger2 = Root,Pos Y >= 0
+value = 1371
+;elem = 1
+ignorehitpause = 1
+;persistent =
+
+[State 1370, Explod]
+type = Explod
+trigger1 = anim = 1371
+trigger1 = AnimElem=1
+anim = 1371
+ID = 13710
+pos = 0,0
+postype = p1  ;p2,front,back,left,right
+bindtime = 1
+removetime = -2
+;pausemovetime = 0
+scale = 3*Const(size.xscale), 3*Const(size.yscale)
+sprpriority = 21
+;ontop = 1
+shadow = 0,0,0
+ownpal = 1
+ignorehitpause = 1
+removeongethit = 0
+
+[State 1370, Explod]
+type = ModifyExplod
+trigger1 = anim = 1371
+trigger1 = AnimElem=3
+ID = 13710
+trans = addalpha
+alpha = Var(1), Var(1)
+
+[State 1370, AngleDraw]
+type = AngleDraw
+trigger1 = anim = 1371
+scale = 3, 3
+ignorehitpause =1
+
+[State 1370, SprPriority]
+type = SprPriority
+trigger1 = 1
+ignorehitpause = 1
+value = 20
+
+[State 1370, PlaySnd]
+type = PlaySnd
+trigger1 = Time <= 0
+ignorehitpause = 1
+persistent = 0
+value = 12, 1
+channel = 3
+
+[State 1370, HitDef]
+type = HitDef
+trigger1 = anim = 1371
+trigger1 = AnimElem=1
+attr = A, SP
+damage = 60,0
+pausetime = 0,3
+sparkno = -1
+guard.sparkno = -1
+hitflag = MAF
+;guardflag = MA
+animtype = heavy
+ground.type = high
+ground.slidetime = 20
+ground.cornerpush.veloff = 0
+ground.hittime = 20
+guard.velocity = ifelse(P2Dist X < 0,2,-2)
+ground.velocity = ifelse(P2Dist X < 0,4,-4),-7
+airguard.velocity = ifelse(P2Dist X < 0,3,-3),-4
+air.animtype = heavy
+air.velocity = ifelse(P2Dist X < 0,3,-3),-5
+air.hittime = 20
+air.cornerpush.veloff = 0
+air.type = high
+palfx.add = 255,255,255
+palfx.time = 1
+air.fall = 1
+fall = 1
+
+;----- Hit Impact -----
+[State 1370, Hit];MoveHit
+type = PlaySnd
+trigger1 = anim = 1371
+trigger1 = AnimElem=1
+ignorehitpause = 1
+value = 12, 1
+channel = 2
+
+[State 1370, Contact]
+type = PlaySnd
+trigger1 = var(2)=77
+ignorehitpause = 1
+value = 12, 2
+channel = 3
+
+[State 1370, VarAdd]
+type = VarAdd
+trigger1 = MoveContact
+trigger1 = var(2) <= 137
+v = 2
+value = 1
+
+[State 1370, Reset]
+type = MoveHitReset
+trigger1 = var(2) >= 137
+trigger2 = anim = 1371 && animtime=0
+ignorehitpause = 1
+
+[State 1370, VarSet]
+type = VarSet
+trigger1 = Time <= 0
+trigger2 = var(2) >= 137
+trigger3 = anim = 1371 && animtime=0
+v = 2
+value = 73
+;-----------
+
+[State 1370, PlayerPush]
+type = PlayerPush
+trigger1 = 1
+ignorehitpause = 1
+value = 1
+
+[State 1370, Width]
+type = Width
+trigger1 = MoveContact;&& Root,Stateno!=[2000,3700];anim = 1371
+value = var(2)*Ceil(Const(size.xscale)),var(2)*Ceil(Const(size.xscale))
+;value = ifelse((root, FrontEdgeBodyDist> 137),var(2)*Ceil(Const(size.xscale)),0),ifelse((root, BackEdgeBodyDist> 137),var(2)*Ceil(Const(size.xscale)),0)
+ignorehitpause = 1
+
+
+[State 1370, ChangeAnim]
+type = ChangeAnim
+trigger1 = anim = 1371 && animtime=0
+value = 1370
+;elem = 1
+ignorehitpause = 1
+;persistent =
+
+[State 1370, State]
+type = ChangeState
+triggerall = Time > 3
+trigger1 = Root, Var(54) <= 0||Roundstate!=2
+;trigger2 = Root, Movetype=H
+;trigger3 = MoveContact
+ignorehitpause = 1
+value = 1371
+
+;---------------------------------------------------------------------------
+; Dark Shield Destroy
+[Statedef 1371]
+type = A
+movetype = A
+physics = N
+anim = 1370
+velset = 0, 0
+ctrl = 0
+
+[State 1370, VarSet]
+type = VarSet
+trigger1 = Time <= 0
+v = 1
+value = 221
+
+[State 1370, VarAdd]
+type = VarAdd
+trigger1 = var(1) < 255
+v = 1
+value = 1
+
+[State 1370, Trans]
+type = Trans
+trigger1 = 1
+ignorehitpause = 1
+trans = addalpha
+alpha = Var(1), Var(1)
+ignorehitpause=1
+
+[State 1370, BindToParent]
+type = BindToRoot
+trigger1 = 1
+facing = 1
+pos = 0, ceil(-17 * const(size.yscale))
+time = 1
+
+[State 1370, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+ignorehitpause = 1
+value = SCA
+time = 1
+
+[State 1370, PlayerPush]
+type = PlayerPush
+trigger1 = 1
+ignorehitpause = 1
+value = 0
+
+[State 1370, SprPriority]
+type = SprPriority
+trigger1 = 1
+ignorehitpause = 1
+value = 20
+
+[State 600361, Destroy]
+type = DestroySelf
+trigger1 = animtime=0
+ignorehitpause = 1
+
+;---------------------------------------------------------------------------
+; Boundary
+[Statedef 2010]
+type = S
+movetype = I
+physics = N
+anim = 2010
+velset = 0,0
+
+[State 2010, 0]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+flag2 = Invisible
+
+[State 2010, 1]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+
+[State 2010, Push]
+type = PlayerPush
+trigger1 = 1
+value = 1;
+
+ignorehitpause = 1
+
+[State 2010, Width]
+type = Width
+trigger1 = 1
+value = 10 * Ceil(Const(size.xscale)),0
+ignorehitpause = 1
+
+;--------------------
+; Binding to Parent
+[State 2010, BindToParent]
+type = BindToParent
+trigger1 = IsHelper(2010)
+facing = 1
+pos = 5 * Const(size.xscale), 0
+time = 1
+
+[State 2010, BindToParent]
+type = BindToParent
+trigger1 = !IsHelper(2010)
+facing = -1
+pos = 55 * Const(size.xscale), 0
+time = 1
+;--------------------
+
+[State 2010, Destroy]
+type = DestroySelf
+trigger1 = Parent, StateNo != 2001 

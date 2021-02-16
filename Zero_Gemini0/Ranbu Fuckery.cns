@@ -1,0 +1,664 @@
+; Super Moves
+;---------------------------------------------------------------------------
+; 7-Slash Sabre Dash 
+[Statedef 4490]
+type = A
+movetype = A
+physics = N
+ctrl = 0
+
+[State 2000, Anim]
+type = ChangeAnim
+trigger1 = Time <= 0
+trigger1 = Anim != 4490
+value = 4490
+
+;[State 2000, PowerAdd]
+;type = PowerAdd
+;triggerall = Time <= 0
+;trigger1 = Var(15) >= 0
+;trigger1 = Var(16) <= 0
+;value = -1000
+
+[State 2000, VelSet]
+type = VelSet
+trigger1 = Time <= 0
+trigger1 = Anim = 4490
+trigger1 = AnimElem = 1
+x = 4 * Const(size.xscale)
+y = -1.5 * Const(size.yscale)
+
+[State 2000, VarSet]
+type = VarSet
+trigger1 = 1
+v = 14
+value = 0
+
+[State 2000, AfterImage]
+type = AfterImage
+trigger1 = Time <= 0
+trigger1 = PrevStateNo != 5000
+time = 1
+length = 12
+framegap = 3
+palcolor = 0
+
+[State 2000, AfterImage]
+type = AfterImageTime
+trigger1 = 1
+ignorehitpause = 1
+time = 2
+
+[State 2000, 3]
+type = VelAdd
+trigger1 = 1
+y = 0.10 * Const(size.yscale)
+
+[State 2000, 4]
+type = HitDef
+trigger1 = NumEnemy > 0
+trigger1 = EnemyNear, MoveType != H
+attr = A, ST
+hitflag = MA-
+priority = 1, Miss
+sparkno = -1
+sprpriority = 1
+pausetime = 0, Ifelse(Var(16) > 0, 25, 50)
+ground.hittime = 10
+air.hittime = 10
+forcestand = 1
+numhits = 0
+
+[State 2000, NotHitBy]
+type = HitOverride
+triggerall = name = "Zero (Ariel AleX Co.//RedLine)"
+triggerall = Var(15) < 0 && Var(17) = 3
+trigger1 = Time >= 1
+trigger2 = Var(16) > 0
+attr = SCA, AA, AT, AP;
+ignorehitpause = 1
+stateno = 5005
+time = 1
+
+[State 2000, NotHitBy]
+type = HitOverride
+triggerall = name = "Zero (Ariel AleX Co.//RedLine)"
+triggerall = Var(15) >= 0 && Var(17) = 1
+trigger1 = Time > 3
+trigger1 = Time <= 33
+trigger2 = Var(16) > 0
+attr = SCA, AA, AT, AP;
+ignorehitpause = 1
+stateno = 5005
+time = 1
+
+[State 2000, 5]
+type = ChangeState
+trigger1 = MoveContact
+ignorehitpause = 1
+value = 4491
+
+[State 52, 1]
+type = PosSet
+triggerall = name = "Zero (Ariel AleX Co.//RedLine)"
+triggerall = Var(15) < 0 && Var(17) = 3
+trigger1 = Vel Y > 0
+trigger1 = Pos Y >= 0
+y = 0
+
+[State 2000, 5]
+type = ChangeState
+triggerall = name = "Zero (Ariel AleX Co.//RedLine)"
+triggerall = Var(15) < 0 && Var(17) = 3
+trigger1 = Vel Y > 0
+trigger1 = Pos Y >= 0
+trigger1 = NumHelper(3510) <= 0 
+value = ifelse(life <= lifemax*0.51 && Power >= 3000 && Var(16) > 0,2500,ifelse(P2Dist X <= 77 && Var(16) <= 0,1000,52))
+
+[State 2000, 5]
+type = ChangeState
+trigger1 = Vel Y > 0
+trigger1 = Pos Y >= 0
+value = 4497
+
+;---------------------------------------------------------------------------
+; 7-Slash Sabre Combo (Shun goku satsu)
+[Statedef 4491]
+type = S
+movetype = A
+physics = S
+velset = 0,0
+ctrl = 0
+
+[State 2000, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+ignorehitpause = 1
+value = SCA
+time = 1
+
+[State 2000, Anim]
+type = ChangeAnim
+trigger1 = Time <= 0
+trigger1 = Anim != 230
+value = 230
+
+;--------------------
+; Fast Speed Slashing
+[State 2000, VarSet]
+type = VarSet
+triggerall = Var(16) <= 0
+trigger1 = AnimElemNo(0) < Var(18) 
+v = 18
+value = AnimElemNo(0) - 1
+
+[State 2000, VarAdd]
+type = VarAdd
+triggerall = Var(16) <= 0
+trigger1 = AnimElemTime(AnimElemNo(0) + 1) < 0
+v = 18
+value = 1
+
+[State 2000, Speed]
+type = ChangeAnim
+triggerall = Var(16) <= 0
+trigger1 = AnimElemTime(AnimElemNo(0) + 1) < 0
+value = Anim
+elem = Var(18)
+;--------------------
+
+[State 2000, PosSet]
+type = PosSet
+trigger1 = Time <= 0
+y = 0
+
+[State 2000, Bind]
+type = TargetBind
+triggerall = NumTarget > 0
+trigger1 = Target, StateType != A
+trigger1 = Target, StateType != L
+ignorehitpause = 1
+persistent = 0
+pos = ceil(25 * const(size.xscale)), 0
+
+[State 2000, PlayerPush]
+type = PlayerPush
+trigger1 = NumTarget > 0
+ignorehitpause = 1
+value = 0
+
+[State 2000, Easy&Hard]
+type = AttackMulSet
+triggerall= Var(17) != 2
+triggerall= name = "Zero (Ariel AleX Co.//RedLine)"
+triggerall= roundstate = 2
+trigger1 = Var(16) <= 0
+ignorehitpause = 1
+value = ifelse(Var(15) < 0 && Var(17) = 3||Var(15) >= 0 && Var(17) = 1,1.377,1)
+
+;--------------------
+; Anim Attack Combo
+[State 2000, VarSet]
+type = VarSet
+trigger1 = Time <= 0
+v = 14
+value = 0
+
+[State 2000, Anim] ;hih
+type = ChangeAnim
+triggerall = Var(14) = 1
+trigger1 = Anim = 230
+trigger1 = AnimElem = 9, > 0	;8, >= 0
+persistent = 0
+value = 200
+
+[State 2000, Anim] ;huh
+type = ChangeAnim
+triggerall = Var(14) = 2
+trigger1 = Anim = 200
+trigger1 = AnimElem = 9, > 0	;6, >= 0
+persistent = 0
+value = 250
+
+[State 2000, Anim] ;whooyah
+type = ChangeAnim
+triggerall = Var(14) = 3
+trigger1 = Anim = 250
+trigger1 = AnimElem = 10, > 0	;8, >= 0
+persistent = 0
+value = 200 ;240
+
+[State 2000, Anim]	;huh 2
+type = ChangeAnim
+triggerall = Var(14) = 4
+trigger1 = Anim = 200
+trigger1 = AnimElem = 9, > 0	;6, >= 0
+persistent = 0
+value = 220
+
+[State 2000, Anim]	;hooh
+type = ChangeAnim
+triggerall = Var(14) = 5
+trigger1 = Anim = 220
+trigger1 = AnimElem = 13, > 0	;10, >= 0
+persistent = 0
+value = 4492
+
+[State 2000, VarAdd]
+type = VarAdd
+trigger1 = AnimElem = 2
+v = 14
+value = 1
+
+;--------------------
+; Anim Attack Sounds
+[State 2000, PlaySnd]
+type = PlaySnd
+trigger1 = Anim = 230
+trigger1 = AnimElem = 2
+value = 10, 1
+channel = 1
+
+[State 2000, PlaySnd]
+type = PlaySnd
+trigger1 = Anim = 200
+trigger1 = AnimElem = 2
+trigger2 = Anim = 240
+trigger2 = AnimElem = 3
+value = 10, 2
+channel = 1
+
+[State 2000, PlaySnd]
+type = PlaySnd
+trigger1 = Anim = 220
+trigger1 = AnimElem = 5
+value = 10, 3
+channel = 1
+
+[State 2000, PlaySnd] ;whooya
+type = PlaySnd
+trigger1 = Anim = 250
+trigger1 = AnimElem = 3
+value = 10, 4
+channel = 1
+;--------------------
+
+;--------------------
+; Attack HitDefs
+[State 2000, HitDef]
+type = HitDef
+;triggerall = NumHelper(10000) > 0
+trigger1 = Anim = 230
+trigger1 = AnimElem = 2
+attr = S, SA
+damage = 30, 0
+getpower = 0,0
+animtype = Light
+hitflag = MA+
+priority = 3, Hit
+pausetime = Ifelse(Var(16) > 0, 0, 4), Ifelse(Var(16) > 0, 12, 21)
+sparkno = 0
+sparkxy = ceil(-10 * Const(size.xscale)), ceil(-20 * Const(size.yscale))
+ground.type = High
+ground.slidetime = 20
+ground.hittime = 20
+ground.velocity = 0
+airguard.velocity = 0,0
+air.type = High
+air.velocity = 0,0
+air.hittime = 20
+forcestand = 1
+kill = 0
+
+[State 2000, HitDef]
+type = HitDef
+;triggerall = NumHelper(10000) > 0
+trigger1 = Anim = 210
+trigger1 = AnimElem = 2
+trigger2 = Anim = 240
+trigger2 = AnimElem = 3
+attr = S, SA
+damage = 30, 0
+getpower = 0,0
+animtype = Medium
+hitflag = MA+
+priority = 3, Hit
+pausetime = Ifelse(Var(16) > 0, 0, 4), Ifelse(Var(16) > 0, 12, 21)
+sparkno = 1
+sparkxy = ceil(-10 * Const(size.xscale)), ceil(-20 * Const(size.yscale))
+ground.type = Low
+ground.slidetime = 20
+ground.hittime = 20
+ground.velocity = 0
+airguard.velocity = 0,0
+air.type = Low
+air.velocity = 0,0
+air.hittime = 20
+forcestand = 1
+kill = 0
+
+[State 2000, HitDef]
+type = HitDef
+;triggerall = NumHelper(10000) > 0
+trigger1 = Anim = 220
+trigger1 = AnimElem = 5
+trigger2 = Anim = 4492
+attr = S, SA
+damage = 30, 0
+getpower = 0,0
+animtype = Heavy
+hitflag = MA+
+priority = 3, Hit
+pausetime = Ifelse(Var(16) > 0, 0, 4), Ifelse(Var(16) > 0, 12, 21)
+sparkno = 2
+sparkxy = ceil(-10 * Const(size.xscale)), ceil(-20 * Const(size.yscale))
+ground.type = High
+ground.slidetime = 20
+ground.hittime = 20
+ground.velocity = 0
+airguard.velocity = 0,0
+air.type = High
+air.velocity = 0,0
+air.hittime = 20
+forcestand = 1
+kill = 0
+;--------------------
+
+;----- Hit Impact -----
+[State 2000, Hit]
+type = PlaySnd
+triggerall = MoveHit
+trigger1 = Anim = 230
+ignorehitpause = 1
+value = 2468, 10
+channel = 2
+
+[State 2000, Hit]
+type = PlaySnd
+triggerall = MoveHit
+trigger1 = Anim = 200
+trigger2 = Anim = 220
+trigger3 = Anim = 250
+trigger4 = Anim = 240
+ignorehitpause = 1
+value = 2468, 11
+channel = 2
+
+[State 2000, Guard]
+type = PlaySnd
+trigger1 = MoveGuarded
+ignorehitpause = 1
+value = 2468, 0
+channel = 3
+
+[State 2000, Reset]
+type = MoveHitReset
+trigger1 = MoveContact
+ignorehitpause = 1
+;--------------------
+
+[State 2000, State]
+type = ChangeState
+triggerall = Var(1) >= 6
+trigger1 = Anim = 4492
+trigger1 = AnimElem = 10, > 0	;8, >= 0
+value = 4494
+
+;---------------------------------------------------------------------------
+; 7-Slash Rising Sabre
+[Statedef 4492]
+type = S
+movetype = A
+physics = S
+velset = 0,0
+juggle = 10
+ctrl = 0
+
+[State 2050, Anim]
+type = ChangeAnim
+trigger1 = Time <= 0
+trigger1 = Anim != 4492
+value = 4492
+
+[State 2050, Easy&Hard]
+type = AttackMulSet
+triggerall= Var(17) != 2
+triggerall= roundstate = 2
+trigger1 = Var(16) <= 0
+ignorehitpause = 1
+value = ifelse(Var(15) < 0 && Var(17) = 3||Var(15) >= 0 && Var(17) = 1,1.377,1)
+
+;----- Hit Impact -----
+[State 2050, Hit]
+type = PlaySnd
+trigger1 = MoveHit
+ignorehitpause = 1
+value = 2468, 12
+channel = 2
+
+[State 2050, Guard]
+type = PlaySnd
+trigger1 = MoveGuarded
+ignorehitpause = 1
+value = 2468, 0
+channel = 3
+
+[State 2050, Reset]
+type = MoveHitReset
+trigger1 = MoveContact
+ignorehitpause = 1
+;--------------------
+
+[State 2050, PlaySnd]
+type = PlaySnd
+trigger1 = Anim = 4492
+trigger1 = AnimElem = 4
+value = 10, 6
+channel = 1
+
+[State 2050, VelSet]
+type = Velset
+trigger1 = Anim = 4492
+trigger1 = AnimElem = 4, >= 0
+x = 1.5
+y = -7.3
+
+[State 2050, VelSet]
+type = Velset
+trigger1 = Time  = 20
+x = 0
+
+[State 2050, State]
+type = ChangeState
+trigger1 = Anim = 4492
+trigger1 = AnimElem = 4, >= 0
+value = 4493
+
+;---------------------------------------------------------------------------
+; 7-Slash Rising Sabre Jumping Air
+[Statedef 4493]
+type = A
+movetype = A
+physics = A
+juggle = 10
+ctrl = 0
+
+[State 2050, Anim]
+type = ChangeAnim
+trigger1 = Time <= 0
+trigger1 = Anim != 55
+trigger1 = Anim != 4492
+trigger1 = Anim != 4493
+value = 4493
+elem = 4
+
+[State 2050, Easy&Hard]
+type = AttackMulSet
+triggerall= Var(17) != 2
+triggerall= roundstate = 2
+trigger1 = Var(16) <= 0
+ignorehitpause = 1
+value = ifelse(Var(15) < 0 && Var(17) = 3||Var(15) >= 0 && Var(17) = 1,1.21,1)
+
+[State 2050, HitDef]
+type = HitDef
+triggerall = Var(15) <= 0
+;triggerall = NumHelper(10000) > 0
+trigger1 = Anim = 4492
+trigger1 = AnimElem = 4
+attr = S, HA
+damage = 90, 0
+getpower = 0,0
+animtype = Heavy
+hitflag = MAF
+guardflag = MA
+priority = 3, Hit
+pausetime = Ifelse(Var(16) > 0, 2, 5), Ifelse(Var(16) > 0, 2, 5)
+sparkno = 2
+sparkxy = ceil(-10 * Const(size.xscale)), ceil(-40 * Const(size.yscale))
+;hitsound = S2, 12
+;guardsound = S2, 0
+ground.type = High
+ground.slidetime = 20
+ground.hittime = 20
+ground.velocity = -4,-8
+airguard.velocity = -2,-4
+air.type = Low
+air.velocity = -4,-8
+air.hittime = 40
+fall.recover = 0
+air.fall = 1
+fall = 1
+
+
+[State 2050, HitDef]
+type = HitDef
+triggerall = Var(15) > 0
+;triggerall = NumHelper(10000) > 0
+trigger1 = Anim = 250
+trigger1 = AnimElem = 4
+attr = S, HA
+damage = 90, 0
+getpower = 0,0
+animtype = Heavy
+hitflag = MAF-
+guardflag = MA
+priority = 3, Hit
+pausetime = Ifelse(Var(16) > 0, 2, 5), Ifelse(Var(16) > 0, 2, 5)
+sparkno = 2
+sparkxy = ceil(-10 * Const(size.xscale)), ceil(-40 * Const(size.yscale))
+;hitsound = S2, 12
+;guardsound = S2, 0
+ground.type = High
+ground.slidetime = 20
+ground.hittime = 20
+ground.velocity = -4,-8
+airguard.velocity = -2,-4
+air.type = Low
+air.velocity = -4,-8
+air.hittime = 40
+fall.recover = 0
+air.fall = 1
+fall = 1
+
+;----- Hit Impact -----
+[State 2050, Hit]
+type = PlaySnd
+trigger1 = MoveHit
+ignorehitpause = 1
+value = 2468, 12
+channel = 2
+
+[State 2050, Guard]
+type = PlaySnd
+trigger1 = MoveGuarded
+ignorehitpause = 1
+value = 2468, 0
+channel = 3
+
+[State 2050, Reset]
+type = MoveHitReset
+trigger1 = MoveContact
+ignorehitpause = 1
+;--------------------
+
+[State 2050, Anim]
+type = ChangeAnim
+trigger1 = Anim = 4492
+trigger1 = AnimElem = 4, > 0
+trigger1 = Vel Y >= 0
+value = 4493
+
+[State 2050, State]
+type = ChangeState
+triggerall = Var(15) >= 0
+triggerall = Anim = 4493
+trigger1 = AnimElem = 3, >= 0
+trigger2 = AnimTime = 0
+value = 4496
+ctrl = 1
+
+[State 2050, StateType]
+type = StateTypeSet
+triggerall = Var(15) < 0
+trigger1 = Anim != 4492
+statetype = A
+movetype = I
+physics = A
+
+;---------------------------------------------------------------------------
+; Jump Down (empty state for compatibility)
+[Statedef 4496]
+type = A
+physics = A
+ctrl=1
+
+[State 51, Anim]
+type = ChangeAnim
+trigger1 = Time = 0
+trigger1 = Anim != 41
+trigger1 = Anim != 42
+trigger1 = Anim != 43
+value = ifelse((Vel X)=0, 41, ifelse((Vel X)>0, 42, 43))
+elem = 2
+
+[State 51, Anim]
+type = ChangeAnim
+trigger1 = Vel Y >= 0
+trigger1 = SelfAnimExist(Anim + 3)
+trigger1 = Anim != Anim + 3
+persistent = 0
+value = Anim + 3
+elem = 2
+
+;---------------------------------------------------------------------------
+; Jump Land
+[Statedef 4497]
+type = S
+physics = S
+velset = 0,0
+ctrl = 0
+
+[State 52, 1]
+type = PosSet
+trigger1 = Time <= 0
+y = 0
+
+[State 52, 2]
+type = PlaySnd
+trigger1 = Time <= 0
+value = 0, 0
+channel = 5
+
+[State 52, 3]
+type = ChangeAnim
+trigger1 = Time <= 0
+trigger1 = Anim != 47
+value = 47
+
+[State 52, 4]
+type = ChangeState
+trigger1 = AnimTime = 0
+trigger2 = Var(15) < 0
+value = 0
+ctrl = 1

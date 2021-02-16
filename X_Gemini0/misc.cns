@@ -1,0 +1,404 @@
+[Statedef -3]
+
+;This controller plays a sound everytime KFM lands from a jump, or
+;from his back-dash.
+[State -3, Landing Sound]
+type = PlaySnd
+triggerall = Time = 1
+trigger1 = stateno = 52 ;Jump land
+value = 0, 6
+
+[State -3, Die Sound]
+type = PlaySnd
+triggerall = Time = 1
+trigger1 = stateno = 5150
+value = 0, 12
+
+[State -3, PowerAdd]
+type = PowerAdd
+trigger1 = time > 1
+value = 3
+;......................dark
+[State 300]
+type = Pause
+trigger1 = var(10) = 1
+time = 10
+movetime = 10
+pos = 2, -30
+
+[State 0, PowerAdd]
+type = PowerAdd
+trigger1 = var(10) = 1
+value = -8
+
+[State 300]
+type = BGPalFX
+trigger1 = var(10) = 1
+time = 10
+invertall = 1
+
+[State 0, Helper]
+type = Helper
+trigger1 = numhelper(6666) = 0
+trigger1 = var(10) = 1
+helpertype = normal
+name = "?"
+ID= 6666
+stateno = 6666
+pos = 0,0
+postype = p2
+pausemovetime = 1000
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = power = 0
+v = 10    ;fv = 10
+value = 0
+
+[State -3, Variables]
+type = DisplayToClipboard
+trigger1 = 1
+text = "X-Buster Charge:%d  X-Buster Hits:%d"
+params = Var(1),Var(0)
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = stateno = 2040
+trigger1 = time = 0
+lowpriority = -1
+value = 0,3
+
+
+[State 0, ChangeAnim]
+type = Changestate
+trigger1 = stateno = 0
+trigger1 = life <= 250
+value = 6000
+
+
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = stateno = [5000,5200]
+trigger1 = time = 0
+trigger1 = random <= 200
+lowpriority = -1
+value = 0,9
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = stateno = [5000,5200]
+trigger1 = time = 0
+trigger1 = random <= 200
+lowpriority = -1
+value = 0,8
+
+[State -2, Reset Hits]
+type = VarSet
+triggerall = Command != "hold_z"
+trigger1 = numproj != 0
+trigger2 = Var(2) > 0
+var(0) = 0
+
+[State -2, Charge X-Buster Hits]
+type = VarAdd
+triggerall = timemod = 50,10
+trigger1 = Command = "hold_z"
+trigger1 = Var(2) = 0
+trigger1 = ctrl
+var(0) = 1
+
+[State -2, Charge Reset]
+type = VarSet
+triggerall = Command != "hold_z"
+trigger1 = numproj != 0
+trigger2 = Var(2) > 0
+var(1) = 0
+
+[State -2, Max Charge]
+type = VarSet
+trigger1 = Var(1) >= 400
+var(1) = 399
+
+[State -2, Charge X-Buster]
+type = VarAdd
+trigger1 = Command = "hold_z"
+trigger1 = Var(2) = 0
+trigger1 = ctrl
+var(1) = 1
+
+[State -2, X-Buster]
+type = Playsnd
+trigger1 = Var(1) = 30
+value = 210,0
+channel = 1
+
+[State -2, X-Buster]
+type = Playsnd
+trigger1 = Var(1) = 135
+value = 200,1
+channel = 2
+
+[State -2, X-Buster Loop]
+type = Playsnd
+trigger1 = Var(1) = 135
+value = 210,1
+channel = 1
+loop = 1
+
+[State -2, Stop Loop]
+type = Stopsnd
+triggerall = Command != "hold_z"
+trigger1 = numproj != 0
+channel = 1
+
+[State -2, Remove Charge]
+type = RemoveExplod
+trigger1 = Command != "hold_z"
+id = 900
+
+[State -2, Remove Charge]
+type = RemoveExplod
+trigger1 = Command != "hold_z"
+id = 901
+
+
+[State -2, Remove Charge]
+type = RemoveExplod
+trigger1 = Command != "hold_z"
+id = 902
+
+; -| Charge Level 1 |----------
+[State -2, 1st Blue]
+type = PalFX
+triggerall = var(1) >= 30
+triggerall = var(1) <= 60
+trigger1 = TimeMod = 4,0
+time = 2
+add = 0,0,250
+
+[State -2, 1st Charge]
+type = Explod
+triggerall = var(1) >= 30
+triggerall = var(1) <= 60
+triggerall = numexplod = 0
+trigger1 = TimeMod = 1,0
+anim = 900
+id = 900
+pos = 1,-5
+bindtime = -1
+ownpal = 1
+ontop = 5
+
+[State -2, Remove Charge]
+type = RemoveExplod
+trigger1 = command != "hold_z"
+trigger2 = var(1) = 100
+id = 900
+
+; -| Charge Level 2 |----------
+[State -2, 2nd Flash]
+type = PalFX
+triggerall = var(1) >= 60
+triggerall = var(1) <= 120
+trigger1 = TimeMod = 4,0
+time = 2
+add = 0,0,250
+
+[State -2, 2nd Charge]
+type = Explod
+triggerall = var(1) >= 60
+triggerall = var(1) <= 120
+triggerall = numexplod = 0
+trigger1 = TimeMod = 1,0
+anim = 901
+id = 901
+pos = 0,-5
+bindtime = -1
+ownpal = 1
+ontop = 5
+
+[State -2, Remove Charge]
+type = RemoveExplod
+trigger1 = command != "hold_z"
+trigger2 = var(1) = 300
+id = 901
+
+; -| Charge Level 3 |----------
+[State -2, 3rd Flash]
+type = PalFX
+triggerall = var(1) >= 120
+;triggerall = var(1) <= 180
+trigger1 = TimeMod = 4,0
+time = 2
+add = 0,0,250
+
+[State -2, 3rd Charge]
+type = Explod
+triggerall = var(1) >= 120
+;triggerall = var(1) <= 180
+triggerall = numexplod = 0
+trigger1 = TimeMod = 1,0
+anim = 902
+id = 902
+pos = 0,-5
+bindtime = -1
+ownpal = 1
+ontop = 5
+
+[State -2, Remove Charge]
+type = RemoveExplod
+trigger1 = command != "hold_z"
+id = 902
+
+
+
+;Charge Saber
+
+[State -3, Variables]
+type = DisplayToClipboard
+trigger1 = 1
+text = "X-Saber Charge:%d  X-Saber Hits:%d"
+params = Var(18),Var(0)
+
+[State -2, Charge Reset]
+type = VarSet
+triggerall = Command != "hold_y"
+trigger1 = animtime = 0
+trigger2 = Var(2) > 0
+var(18) = 0
+
+[State -2, Max Charge]
+type = VarSet
+trigger1 = Var(18) >= 400
+var(18) = 399
+
+[State -2, Charge X-Saber]
+type = VarAdd
+trigger1 = Command = "hold_y"
+trigger1 = Var(2) = 0
+trigger1 = ctrl
+var(18) = 1
+
+[State -2, X-Saber]
+type = Playsnd
+trigger1 = Var(18) = 30
+value = 210,0
+channel = 4
+
+[State -2, X-Saber]
+type = Playsnd
+trigger1 = Var(18) = 135
+value = 200,1
+channel = 2
+
+[State -2, X-Saber Loop]
+type = Playsnd
+trigger1 = Var(18) = 135
+value = 210,1
+channel = 4
+loop = 1
+
+[State -2, Stop Loop]
+type = Stopsnd
+trigger1 = Command != "hold_y"
+channel = 4
+
+[State -2, Remove Charge]
+type = RemoveExplod
+trigger1 = Command != "hold_y"
+id = 600
+
+[State -2, Remove Charge]
+type = RemoveExplod
+trigger1 = Command != "hold_y"
+id = 601
+
+
+[State -2, Remove Charge]
+type = RemoveExplod
+trigger1 = Command != "hold_y"
+id = 602
+
+; -| Charge Level 1 |----------
+[State -2, 1st low]
+type = PalFX
+triggerall = var(18) >= 30
+triggerall = var(18) <= 60
+trigger1 = TimeMod = 4,0
+time = 2
+add = 30,30,0
+
+[State -2, 1st Charge]
+type = Explod
+triggerall = var(1) >= 30
+triggerall = var(1) <= 60
+triggerall = numexplod = 0
+trigger1 = TimeMod = 1,0
+anim = 900
+id = 600
+pos = 1,-5
+bindtime = -1
+ownpal = 1
+ontop = 5
+
+[State -2, Remove Charge]
+type = RemoveExplod
+trigger1 = command != "hold_y"
+trigger2 = var(8) = 100
+id = 600
+
+; -| Charge Level 2 |----------
+[State -2, 2nd medium]
+type = PalFX
+triggerall = var(18) >= 60
+triggerall = var(18) <= 120
+trigger1 = TimeMod = 4,0
+time = 2
+add = 60,60,0
+
+[State -2, 2nd Charge]
+type = Explod
+triggerall = var(18) >= 60
+triggerall = var(18) <= 120
+triggerall = numexplod = 0
+trigger1 = TimeMod = 1,0
+anim = 901
+id = 601
+pos = 0,-5
+bindtime = -1
+ownpal = 1
+ontop = 5
+
+[State -2, Remove Charge]
+type = RemoveExplod
+trigger1 = command != "hold_y"
+trigger2 = var(18) = 300
+id = 601
+
+; -| Charge Level 3 |----------
+[State -2, 3rd max]
+type = PalFX
+triggerall = var(18) >= 120
+;triggerall = var(1) <= 180
+trigger1 = TimeMod = 4,0
+time = 2
+add = 90,90,0
+
+[State -2, 3rd Charge]
+type = Explod
+triggerall = var(18) >= 120
+;triggerall = var(1) <= 180
+triggerall = numexplod = 0
+trigger1 = TimeMod = 1,0
+anim = 902
+id = 602
+pos = 0,-5
+bindtime = -1
+ownpal = 1
+ontop = 5
+
+[State -2, Remove Charge]
+type = RemoveExplod
+trigger1 = command != "hold_y"
+id = 602

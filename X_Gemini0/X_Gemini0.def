@@ -1,0 +1,27 @@
+
+; Player information
+[Info]
+name ="X (Gemini0 Edit)"
+displayname ="X"
+versiondate = 15,02,2021
+mugenversion =1.0
+author ="Gemini0" ; Original author was FXFreitas
+pal.defaults = 1,2,3,4,5,6
+
+; Files for the player
+[Files]
+cmd     =x.cmd
+cns     =x.cns
+st      =x.cns
+stcommon =common1.cns
+sprite  =x.sff
+anim    =x.air
+sound   =x.snd
+pal1=x.act
+pal2=X6.act
+pal3=MHX.act
+pal4=UX.act
+pal5=NX.act
+pal6=IX.act
+st1=Commons.cns
+st2=misc.cns

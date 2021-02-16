@@ -1,0 +1,216 @@
+;---------------------------------------------------------------------------
+; Omega's Aura Shadow
+[Statedef 9999]
+sprpriority = -10
+movetype = I
+ctrl = 0
+
+[State 9999, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+
+[State 9999, PlayerPush]
+type = PlayerPush
+trigger1 = 1
+value = 0
+
+[State 9999, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+
+[State 9999, AssertSpecial]
+type = AssertSpecial
+trigger1 = !AnimExist(Root, Anim)
+trigger2 = Root, MoveType = H
+trigger2 = Root, Anim > 150
+trigger2 = Root, Anim < 5000
+trigger3 = Root, MoveType = H
+trigger3 = Root, Anim > 6000
+trigger4 = Time <= 0
+flag = Invisible
+
+[State 9999, SprPriority]
+type = SprPriority
+trigger1 = 1
+value = -10
+
+[State 9999, BindToRoot]
+type = BindToRoot
+trigger1 = 1
+facing = 1
+pos = 0,0
+time = 1
+
+[State 9999, PalFX]
+type = PalFX
+trigger1 = 1
+time = 1
+color = 0
+add = 250,250,250
+mul = 250,250,250
+
+;----- Set Animation -----
+[State 9999, VarSet]		; Binded Animation Fix
+type = VarSet
+trigger1 = Root, HitPauseTime = 0
+var(0) = Root, AnimElemNo(0)
+
+[State 9999, Anim]
+type = ChangeAnim
+trigger1 = AnimExist(Root, Anim)
+value = Root, Anim
+elem = Var(0)
+
+[State 9999, Anim]
+type = ChangeAnim
+triggerall = Root, StateNo >= 2102
+triggerall = Root, StateNo < 2105
+triggerall = Root, HitPauseTime > 0
+trigger1 = Root, AnimElemNo(0) > AnimElemNo(0)
+value = Root, Anim
+elem = Root, AnimElemNo(0)
+;-------------------------
+
+;----- Scale Timer -----
+[State 9999, VarAdd]
+type = VarAdd
+trigger1 = Time > 0
+trigger1 = Root, StateNo != 190
+var(10) = 1
+
+[State 9999, VarSet]
+type = VarSet
+trigger1 = Time <= 0
+trigger2 = Var(10) >= 300
+var(10) = 0
+;-------------------------
+
+;----- Size X Scale -----
+[State 9999, VarSet]
+type = VarSet
+trigger1 = Time <= 0
+trigger2 = FVar(0) < 1.20
+fvar(0) = 1.30
+
+[State 9999, VarAdd]
+type = VarAdd
+trigger1 = FVar(0) >= 1.20
+fvar(0) = -0.05
+;-------------------------
+
+;----- Size Y Scale -----
+[State 9999, VarSet]
+type = VarSet
+trigger1 = Time <= 0
+trigger2 = FVar(1) <= 1.10
+fvar(1) = 1.20
+
+[State 9999, VarAdd]
+type = VarAdd
+trigger1 = FVar(1) > 1.10
+fvar(1) = -0.05
+;-------------------------
+
+;----- Resize X Scale -----
+; -=[ Grow ]=-
+[State 9999, VarAdd]
+type = VarAdd
+triggerall = TimeMod = 5,0
+triggerall = FVar(10) < 0.225
+trigger1 = Var(10) >= 100
+trigger1 = Var(10) <= 150
+fvar(10) = 0.025
+
+; -=[ Shrink ]=-
+[State 9999, VarAdd]
+type = VarAdd
+triggerall = TimeMod = 5,0
+triggerall = FVar(10) > 0.025
+trigger1 = Var(10) >= 250
+trigger1 = Var(10) <= 300
+fvar(10) = -0.025
+
+[State 9999, VarSet]
+type = VarSet
+trigger1 = Time <= 0
+trigger2 = FVar(10) <= 0.025
+fvar(10) = 0.025
+;-------------------------
+
+;----- Resize Y Scale -----
+; -=[ Grow ]=-
+[State 9999, VarAdd]
+type = VarAdd
+triggerall = TimeMod = 5,0
+triggerall = FVar(11) < 0.2
+trigger1 = Var(10) >= 100
+trigger1 = Var(10) <= 150
+fvar(11) = 0.025
+
+; -=[ Shrink ]=-
+[State 9999, VarAdd]
+type = VarAdd
+triggerall = TimeMod = 5,0
+triggerall = FVar(11) > 0
+trigger1 = Var(10) >= 250
+trigger1 = Var(10) <= 300
+fvar(11) = -0.025
+
+[State 9999, VarSet]
+type = VarSet
+trigger1 = Time <= 0
+trigger2 = FVar(11) <= 0
+fvar(11) = 0
+;-------------------------
+
+;----- Size Scale Draw -----
+[State 9999, AngleDraw]
+type = AngleDraw
+trigger1 = Root, StateNo = 190
+scale = (FVar(0) + FVar(10)) - 0.025, (FVar(1) + FVar(11)) - 0.025
+
+[State 9999, AngleDraw]
+type = AngleDraw
+trigger1 = Root, StateNo != 190
+scale = FVar(0) + FVar(10), FVar(1) + FVar(11)
+;-------------------------
+
+[State 9999, Trans]
+type = null ;Trans
+trigger1 = 1
+trans = addalpha
+alpha = 200,200
+
+[State 9999, 1]
+type = null ;AfterImage
+trigger1 = Time <= 0
+ignorehitpause = 1
+time = 0
+TimeGap = 1
+FrameGap = 1
+length = 5
+PalBright = 100,100,100
+PalContrast = 100,100,100
+Trans = addalpha
+
+[State 9999, AfterImage]
+type = null ;AfterImageTime
+trigger1 = 1
+ignorehitpause = 1
+time = 2
+
+[State 9999, Variables]
+type = DisplayToClipboard
+trigger1 = 1
+text = "Scale X:  %f     Scale Y:  %f     Timer: %d \nSize X:   %f     Size Y:   %f"
+params = FVar(0), FVar(1), Var(10), FVar(10), FVar(11)
+
+[State 9999, Destroy]
+type = DestroySelf
+trigger1 = Anim = 185
+trigger1 = AnimElem = 10, >= 0
+trigger2 = Root, StateType = L
+trigger2 = Root, Alive = 0

@@ -1,0 +1,520 @@
+;----------------------------------------------------------------------------
+[Statedef 170]
+type = S
+ctrl = 0
+anim = 170
+velset = 0,0
+
+[State 170, 1]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+
+[Statedef 180]
+type = S
+
+[State 180, 1]
+type = ChangeState
+trigger1 = Time = 0
+value = 181
+;---------------------------------------------------------------------------
+;INTRO
+[Statedef 191]
+type = S
+ctrl = 0
+anim = 190
+velset = 0,7
+
+[state 191, AssertSpecial Flag]
+type     = assertspecial
+trigger1 = 1
+flag     = intro
+
+[State 1, Sound]
+type = PlaySnd
+trigger1 = Time = 1
+value = 190, 0
+
+[state 191, 1]
+type     = posset
+trigger1 = animelem = 1
+y = -250
+
+[state 191, 2]
+type     = ScreenBound
+trigger1 = time = 0
+value = 1
+
+[State 191 3]
+type = velset
+trigger1 = Vel Y> 0; Verdadero si la Y-velocidad es> 0 (bajando)
+trigger1 = Pos Y> 0; Verdadero si el Y-posición es> 0 (debajo de la tierra)
+x= 0
+y= 0
+
+[State 191 3]
+type = changestate
+trigger1 = Vel Y = 0
+value = 192
+
+[Statedef 192]
+type = S
+ctrl = 0
+anim = 191
+velset = 0,0
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = time = 0
+x = 0
+y = -2
+
+[State 1, Sound]
+type = PlaySnd
+trigger1 = Time = 60
+value = 190, 1
+
+[state 191, AssertSpecial Flag]
+type     = assertspecial
+trigger1 = 1
+flag     = intro
+
+[State 191 3]
+type = changestate
+trigger1 = animtime = 0
+value = 0
+
+
+;-------------------------------------------------------------------------------
+;Win
+[Statedef 181]
+type = S
+ctrl = 0
+anim = 181
+velset = 0,0
+
+[State 181, 1]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = animelem = 9
+x = 0
+y = -7
+
+[State 1, Sound]
+type = PlaySnd
+trigger1 = Time = 21
+value = 250, 1
+
+[State 1, Sound]
+type = PlaySnd
+trigger1 = Time = 45
+value = 180, 1
+
+[State 1, Sound]
+type = PlaySnd
+trigger1 = Time = 60
+value = 180, 0
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = time = [0,100]
+flag = roundnotover
+
+;---------------------------------------------------------------------------
+; DASH
+[Statedef 100]
+type = S
+physics = S
+anim = 100
+
+[State 100, 1]
+type = VelSet
+trigger1 = 1
+x = const(velocity.run.fwd.x)
+
+[State 0, Sound]
+type = PlaySnd
+trigger1 = Time = 1
+value = 0, 7
+
+[State 100, assert]
+type = AssertSpecial
+triggerall = var(59)!= 1
+trigger1 = command = "holdfwd"
+flag = nowalk
+
+[State 105, 1]
+type = AfterImage
+trigger1 = stateno = 100
+time = 20
+framegap = 1
+timegap = 1
+lenght = 12
+PalBright   =  -0, -0,  -0
+Palmul = 0.9 , 0.9 , 0.9
+PalAdd      =   0,  0,  0
+;PalMul      =  1,1,1
+Trans = Add
+persistent = 0
+
+[State 100, assert]
+type = AssertSpecial
+triggerall = var(59)!= 1
+trigger1 = command = "holdfwd"
+flag = nowalk
+
+[State 100, 2]
+type = ChangeState
+trigger1 = time = 20
+value = 101
+
+; Stop Dash
+[Statedef 101]
+type = S
+ctrl = 0
+anim = 101
+velset = 0,0
+movetype = I
+physics = S
+sprpriority = 2
+
+[State 101, 1]
+type = VelSet
+trigger1 = 1
+x = 2
+
+[State 101, 2]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;..............................................................................
+
+;Back Dash
+[Statedef 105]
+type = S
+physics = S
+anim = 105
+
+[State 100, 1]
+type = VelSet
+trigger1 = 1
+x = const(velocity.run.back.x)
+
+[State 0, Sound]
+type = PlaySnd
+trigger1 = Time = 1
+value = 0, 7
+
+[State 100, assert]
+type = AssertSpecial
+trigger1 = command = "holdback"
+triggerall = var(59)!= 1
+flag = nowalk
+
+[State 105, 1]
+type = AfterImage
+trigger1 = stateno = 105
+time = 20
+framegap = 1
+timegap = 1
+lenght = 12
+PalBright   =  -0, -0,  -0
+Palmul = 0.9 , 0.9 , 0.9
+PalAdd      =   0,  0,  0
+;PalMul      =  1,1,1
+Trans = Add
+persistent = 0
+
+[State 100, assert]
+type = AssertSpecial
+trigger1 = command = "holdback"
+triggerall = var(59)!= 1
+flag = nowalk
+
+[State 100, 2]
+type = ChangeState
+trigger1 = time = 20
+value = 106
+
+; Stop Dash
+[Statedef 106]
+type = S
+ctrl = 0
+anim = 106
+velset = 0,0
+movetype = I
+physics = S
+sprpriority = 2
+
+[State 101, 1]
+type = VelSet
+trigger1 = 1
+x = -2
+
+[State 101, 2]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;------------------------------------------------------------------------------
+;cansado
+[Statedef 6000]
+type = S
+physics = S
+sprpriority = 0
+
+[State 0, 1]
+type = ChangeAnim
+trigger1 = Anim != 6000 && Anim != 5
+trigger2 = Anim = 5 && AnimTime = 0 ;Turn anim over
+value = 6000
+
+[State 0, 2]
+type = VelSet
+trigger1 = Time = 0
+y = 0
+
+[State 0, 3] ;Stop moving if low velocity or 4 ticks pass
+type = VelSet
+trigger1 = abs(vel x) < 2
+trigger2 = Time = 4
+x = 0
+
+[State 0, 4] ;Are you dead?
+type = ChangeState
+trigger1 = !alive
+value = 5050
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 0
+trigger1 = var(42) = 1
+value = 0,0
+
+[State 0,eliminar variable]
+type = VarSet
+trigger1 = Time = 1
+v = 42
+value = 0
+
+;---------------------------------------------------------------------------
+; Taunt
+; CNS difficulty: easy
+[Statedef 195]
+type = S
+ctrl = 0
+anim = 195
+velset = 0,0
+movetype = I
+physics = S
+sprpriority = 2
+
+[State 195, 1]
+type = CtrlSet
+trigger1 = Time = 40
+value = 1
+
+[State 195, 2]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+[Statedef 10]
+type = s
+[State 10]
+type = null
+trigger1 = 1
+
+;-------------------------------------------------------------------------
+[Statedef 40];Dash Fix
+velset = 0,0
+type = s
+[State 40]
+type = null
+trigger1 = 1
+
+;---------------------------------------------------------------------------
+; Stand to Crouch
+[Statedef 4010]
+type    = C
+physics = C
+anim = 10
+
+[State 10, 1]
+type = VelMul
+triggerall = var(59)!= 1
+trigger1 = command = "holddown"
+trigger1 = Time = 0
+x = .75
+
+[State 10, 2]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 11
+
+;---------------------------------------------------------------------------
+; Walk
+[Statedef 20]
+type    = S
+physics = S
+sprpriority = 0
+
+[State 20, 1]
+type = VelSet
+triggerall = var(59)!= 1
+trigger1 = command = "holdfwd"
+x = const(velocity.walk.fwd.x)
+
+[State 20, 2]
+type = VelSet
+triggerall = var(59)!= 1
+trigger1 = command = "holdback"
+x = const(velocity.walk.back.x)
+
+[State 20, 3]
+type = ChangeAnim
+triggerall = vel x > 0
+trigger1 = Anim != 20 && Anim != 5
+trigger2 = Anim = 5 && AnimTime = 0
+value = 20
+
+[State 20, 4]
+type = ChangeAnim
+triggerall = vel x < 0
+trigger1 = Anim != 21 && Anim != 5
+trigger2 = Anim = 5 && AnimTime = 0
+value = 21
+
+;---------------------------------------------------------------------------
+; Jump Start
+[Statedef 4040]
+type    = S
+physics = S
+anim = 40
+ctrl = 0
+sprpriority = 1
+
+[State 40, 1]
+type = VarSet
+trigger1 = Time = 0
+trigger1 = command = "holdup"
+sysvar(1) = 0
+
+[State 40, 2]
+type = VarSet
+trigger1 = command = "holdfwd"
+sysvar(1) = 1
+
+[State 40, 3]
+type = VarSet
+trigger1 = command = "holdback"
+sysvar(1) = -1
+
+[State 40, 4]
+type = VelSet
+triggerall = var(59)!= 1
+trigger1 = AnimTime = 0
+x = ifelse(sysvar(1)=0, const(velocity.jump.neu.x), ifelse(sysvar(1)=1, const(velocity.jump.fwd.x), const(velocity.jump.back.x)))
+y = const(velocity.jump.y)
+
+[State 40, 5]
+type = VelSet
+triggerall = var(59)!= 1
+trigger1 = AnimTime = 0
+trigger1 = prevstateno = 100 ;RUN_FWD
+trigger1 = sysvar(1) = 1
+x = const(velocity.runjump.fwd.x)
+
+[State 40, 6]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 50
+ctrl = 1
+
+
+;CPU Dash
+[Statedef 103]
+type = s
+movetype = i
+physics = n
+anim = 100
+ctrl = 0
+sprpriority = 5
+
+[State 100, 1]
+type = VelSet
+trigger1 = 1
+x = const(velocity.run.fwd.x)
+
+[State 0, Sound]
+type = PlaySnd
+trigger1 = Time = 1
+value = 0, 7
+
+[State 105, 1]
+type = AfterImage
+trigger1 = stateno = 103
+time = 20
+framegap = 1
+timegap = 1
+lenght = 12
+PalBright   =  -0, -0,  -0
+Palmul = 0.9 , 0.9 , 0.9
+PalAdd      =   0,  0,  0
+;PalMul      =  1,1,1
+Trans = Add
+persistent = 0
+
+[State 100, 2] ;Prevent run from canceling into walk
+type = AssertSpecial
+trigger1 = 1
+flag = NoWalk
+ignorehitpause=1
+
+[State 100]
+type = changestate
+triggerall = time = 18
+trigger1 = var(59) = 1;AI—p
+value = 1011
+ctrl = 0
+;---------------------------------------------------------------------------
+;---------------------------------------------------------------------------
+;CPU Dash Stop
+[Statedef 1011]
+type = S
+physics = S
+sprpriority = 1
+velset = 0,0
+ctrl = 1
+
+[State 100, 1] ;Prevent run from canceling into walk
+type = AssertSpecial
+trigger1 = 1
+flag = NoWalk
+
+[State 100, 2] ;Prevent from turning
+type = AssertSpecial
+trigger1 = 1
+flag = NoAutoTurn
+
+[State 100, Anim]
+type = ChangeAnim
+trigger1 = Time <= 0
+trigger1 = Anim != 101
+value = 101
+
+[State 100, 3]
+type = ChangeState
+trigger1 = time = 0
+value = 0
