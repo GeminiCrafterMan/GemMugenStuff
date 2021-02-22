@@ -20,21 +20,6 @@ anim     = URSonic.air          ; Animation
 sound    = URSonic.snd          ; Sound
 ;ai       = URSonic.ai           ; AI hints data (not used)
 
-; Maps character selection buttons to palette numbers.
-[Palette Keymap]
-x  = 1 ;Press button X to select palette 1, etc.
-y  = 2
-z  = 3
-a  = 1
-b  = 2
-c  = 3
-x2 = 4 ;Hold Start and press button X for palette 7, etc.
-y2 = 5
-z2 = 6
-a2 = 4
-b2 = 5
-c2 = 6
-
 pal1 = act/Sonic.act
 pal2 = act/Tails.act
 pal3 = act/Knuckles.act
