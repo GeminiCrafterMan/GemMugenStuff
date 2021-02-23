@@ -15,7 +15,7 @@ cmd      = URSonic.cmd          ; Command set
 cns      = URSonic.cns          ; Constants
 st       = URSonic.st          ; States
 stcommon = common1.cns       ; Common states (from data or motif)
-sprite   = URSonic.sff          ; Sprite
+sprite   = URSonic.sff          ; Sprite... Align to the grid lines like you do with Flex 2, then move UP by 19 pixels.
 anim     = URSonic.air          ; Animation
 sound    = URSonic.snd          ; Sound
 ;ai       = URSonic.ai           ; AI hints data (not used)
@@ -24,6 +24,7 @@ pal1 = act/Sonic.act
 pal2 = act/Tails.act
 pal3 = act/Knuckles.act
 pal4 = act/Shadow.act
+pal5 = act/PC98Reimu.act
 
 ; Arcade mode
 [Arcade]

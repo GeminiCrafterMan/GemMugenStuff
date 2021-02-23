@@ -149,6 +149,11 @@ ctrl = 0
 sprpriority = 1
 facep2 = 1
 
+[State 40, 0]
+type = PlaySnd
+trigger1 = Time = 0
+value = 0,0
+
 [State 40, 1]
 type = VarSet
 trigger1 = Time = 0
@@ -191,10 +196,10 @@ physics = N
 ctrl = 0
 velset = 0,0
 
-[State 50, 0]
+[State 45, 0]
 type = PlaySnd
 trigger1 = Time = 0
-value = 0,4
+value = 0,1
 
 [State 45, 1]
 type = ChangeAnim
@@ -238,11 +243,6 @@ ctrl = 1
 [Statedef 50]
 type    = A
 physics = A
-
-[State 50, 0]
-type = PlaySnd
-trigger1 = Time = 0
-value = 0,0
 
 [State 50, 1]
 type = VarSet
