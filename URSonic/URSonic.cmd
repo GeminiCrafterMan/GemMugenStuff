@@ -145,6 +145,44 @@ command.time = 15
 ; maximum 30.
 command.buffer.time = 1
 
+;-| Double Tap |-----------------------------------------------------------
+[Command]
+name = "FF"     ;Required (do not remove)
+command = F, F
+time = 10
+
+[Command]
+name = "BB"     ;Required (do not remove)
+command = B, B
+time = 10
+
+;-| 2/3 Button Combination |-----------------------------------------------
+[Command]
+name = "recovery";Required (do not remove)
+command = x+y
+time = 1
+
+;-| Hold Dir |--------------------------------------------------------------
+[Command]
+name = "holdfwd";Required (do not remove)
+command = /$F
+time = 1
+
+[Command]
+name = "holdback";Required (do not remove)
+command = /$B
+time = 1
+
+[Command]
+name = "holdup" ;Required (do not remove)
+command = /$U
+time = 1
+
+[Command]
+name = "holddown";Required (do not remove)
+command = /$D
+time = 1
+
 ;---------------------------------------------------------------------------
 ; 2. State entry
 ; --------------
@@ -187,44 +225,6 @@ command.buffer.time = 1
 
 ; Don't remove the following line. It's required by the CMD standard.
 [Statedef -1]
-
-;-| Double Tap |-----------------------------------------------------------
-[Command]
-name = "FF"     ;Required (do not remove)
-command = F, F
-time = 10
-
-[Command]
-name = "BB"     ;Required (do not remove)
-command = B, B
-time = 10
-
-;-| 2/3 Button Combination |-----------------------------------------------
-[Command]
-name = "recovery";Required (do not remove)
-command = x+y
-time = 1
-
-;-| Hold Dir |--------------------------------------------------------------
-[Command]
-name = "holdfwd";Required (do not remove)
-command = /$F
-time = 1
-
-[Command]
-name = "holdback";Required (do not remove)
-command = /$B
-time = 1
-
-[Command]
-name = "holdup" ;Required (do not remove)
-command = /$U
-time = 1
-
-[Command]
-name = "holddown";Required (do not remove)
-command = /$D
-time = 1
 
 ;---------------------------------------------------------------------------
 ;Run Fwd
