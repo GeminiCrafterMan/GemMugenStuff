@@ -883,6 +883,12 @@ type = S
 ctrl = 0
 velset = 0,0
 
+[State 191, 0] ; vs. Kyukyoku Sonic...
+type = ChangeAnim
+triggerall = Time = 0
+trigger1 = enemy,name = "Sonic The Hedgehog by supermystery" && enemy,authorname = "supermystery, Gemini0, jrm1007, DashNK, Iso Kilo, Slim, Bruce"
+value = 191
+
 [State 190, 1]
 type = ChangeAnim
 trigger1 = SelfAnimExist(190)

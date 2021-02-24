@@ -24,7 +24,8 @@ pal3 = act\Knuckles.act
 pal4 = act\Shadow.act
 pal5 = act\PC98Reimu.act
 pal6 = act\Monochrome.act
-pal7 = act\Sonic 1.act
+pal7 = act\Sonic1.act
+pal8 = act\Sonic2.act
 
 ; Arcade mode
 [Arcade]
