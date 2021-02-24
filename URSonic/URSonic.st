@@ -101,7 +101,7 @@ x = 0
 [Statedef 12]
 type    = S
 physics = S
-anim = 12
+anim = 10
 
 [State 12, 1]
 type = ChangeState
