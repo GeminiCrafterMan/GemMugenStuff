@@ -15205,6 +15205,7 @@ trigger1 = Enemynear, Name = "Omega Zero"
 trigger2 = Enemynear, Name = "Omega"
 trigger3 = Enemynear, Name = "OmegaZero"
 trigger4 = Enemynear, Name = "Zero" && Enemynear, Authorname = "N64Mario" && Enemynear, SelfAnimExist(3300)=1
+trigger5 = Enemynear, Name = "Zero (Gemini0 Edit)" && Enemynear, Palno = 9
 value = 23
 
 [State -2, Zero]
@@ -15216,7 +15217,7 @@ trigger4 = Enemynear, Name = "Maverick Hunter Zero"
 trigger5 = Enemynear, Name = "Zero" && Enemynear, Authorname != "N64Mario" && Enemynear, Authorname != "aznperson569M"
 trigger6 = Enemynear, Name = "RMX6-Zero"
 trigger7 = Enemynear, Name = "RMX8-Zero"
-trigger8 = Enemynear, Name = "Zero (Gemini0 Edit)"
+trigger8 = Enemynear, Name = "Zero (Gemini0 Edit)" && Enemynear, Palno != 9
 value = 24
 
 [State -2, Shovel Knight]
