@@ -162,6 +162,85 @@ name = "recovery";Required (do not remove)
 command = x+y
 time = 1
 
+;----- |Single Buttons| -----
+
+[Command]
+name = "a"
+command = a
+time = 1
+
+[Command]
+name = "b"
+command = b
+time = 1
+
+[Command]
+name = "c"
+command = c
+time = 1
+
+[Command]
+name = "x"
+command = x
+time = 1
+
+[Command]
+name = "y"
+command = y
+time = 1
+
+[Command]
+name = "z"
+command = z
+time = 1
+
+[Command]
+name = "s"
+command = s
+time = 1
+
+[Command]
+name = "Up"
+command = $UB
+time = 1
+
+[Command]
+name = "Up"
+command = $UF
+time = 1
+
+;----- |Holds Dir...| -----
+
+[Command]
+name = "ar"
+command = /U
+time = 1
+[Command]
+name = "at"
+command = /UB
+time = 1
+[Command]
+name = "ad"
+command = /UF
+time = 1
+[Command]
+name = "ab"
+command = /D
+time = 1
+[Command]
+name = "aa"
+command = /DB
+time = 1
+[Command]
+name = "ae"
+command = /DF
+time = 1
+
+[Command]
+name = "hold_y"
+command = /y
+time = 1
+
 ;-| Hold Dir |--------------------------------------------------------------
 [Command]
 name = "holdfwd";Required (do not remove)
@@ -241,5 +320,32 @@ trigger1 = ctrl
 type = ChangeState
 value = 105
 trigger1 = command = "BB"
+trigger1 = statetype = S
+trigger1 = ctrl
+
+;---------------------------------------------------------------------------
+; Punch L
+[State -1, Punch L]
+type = ChangeState
+value = 200
+trigger1 = command = "x"
+trigger1 = statetype = S
+trigger1 = ctrl
+
+;---------------------------------------------------------------------------
+; Punch M
+[State -1, Punch M]
+type = ChangeState
+value = 201
+trigger1 = command = "y"
+trigger1 = statetype = S
+trigger1 = ctrl
+
+;---------------------------------------------------------------------------
+; Punch H
+[State -1, Punch H]
+type = ChangeState
+value = 202
+trigger1 = command = "z"
 trigger1 = statetype = S
 trigger1 = ctrl
