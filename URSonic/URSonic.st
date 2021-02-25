@@ -883,18 +883,23 @@ type = S
 ctrl = 0
 velset = 0,0
 
-[State 191, 0] ; vs. Kyukyoku Sonic...
-type = ChangeAnim
+[State 190, 0] ;Assert this until you want "round 1, fight" to begin
+type = AssertSpecial
+trigger1 = 1
+flag = Intro
+
+[State 190, 1] ; vs. Kyukyoku Sonic...
+type = ChangeState
 triggerall = Time = 0
 trigger1 = enemy,name = "Sonic The Hedgehog by supermystery" && enemy,authorname = "supermystery, Gemini0, jrm1007, DashNK, Iso Kilo, Slim, Bruce"
-value = 191
+value = 192
 
-[State 190, 1]
+[State 190, 2]
 type = ChangeAnim
 trigger1 = SelfAnimExist(190)
 value = 190
 
-[State 190, 2] ;Go straight to intro.
+[State 190, 3] ;Go straight to intro.
 type = ChangeState
 trigger1 = Time = 0
 value = 191
@@ -910,6 +915,28 @@ type = ChangeState
 trigger1 = Time = 0
 value = 0
 
+;---------------------------------------------------------------------------
+; Intro (Vs. Kyukyoku Sonic)
+[Statedef 192]
+type = S
+ctrl = 0
+velset = 0,0
+anim = 192
+
+[State 192, 0] ;Assert this until you want "round 1, fight" to begin
+type = AssertSpecial
+trigger1 = 1
+flag = Intro
+
+[State 192, 2]
+type = PlaySnd
+trigger1 = AnimTime = 103
+value = 0,7
+
+[State 192, 3]
+type = ChangeState
+trigger1 = AnimTime = 187
+value = 0
 ;---------------------------------------------------------------------------
 ; Stand get-hit (shaking)
 [Statedef 5000]
