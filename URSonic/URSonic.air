@@ -363,3 +363,17 @@ Clsn2Default: 1
   Clsn2[0] = -8, -35, 8, -3
 17,1, 0,0, 1
 
+
+; Sonic fell into the void
+[Begin Action 5000]
+Clsn2Default: 1
+  Clsn2[0] = -8, -30, 8, -8
+19,0, 0,0, 4
+19,1, 0,0, 4
+
+; Ouch! That looks like it hurt
+[Begin Action 5030]
+Clsn2Default: 1
+  Clsn2[0] = -8, -30, 8, -8
+19,0, 0,0, 5
+
