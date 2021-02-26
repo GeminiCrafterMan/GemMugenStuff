@@ -950,7 +950,7 @@ poweradd = 23
 
 [State 200, 1]
 type = HitDef
-trigger1 = AnimElem = 9
+trigger1 = AnimElem = 4
 attr = S, NA                     ;Attribute: Standing, Normal Attack
 damage = 23, 0                   ;Damage that move inflicts, guard damage
 animtype = Light                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
@@ -993,7 +993,7 @@ poweradd = 23
 
 [State 201, 1]
 type = HitDef
-trigger1 = AnimElem = 14
+trigger1 = AnimElem = 9
 attr = S, NA                     ;Attribute: Standing, Normal Attack
 damage = 46, 0                   ;Damage that move inflicts, guard damage
 animtype = Medium                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
@@ -1036,7 +1036,7 @@ poweradd = 23
 
 [State 202, 1]
 type = HitDef
-trigger1 = AnimElem = 19
+trigger1 = AnimElem = 14
 attr = S, NA                     ;Attribute: Standing, Normal Attack
 damage = 69, 0                   ;Damage that move inflicts, guard damage
 animtype = Heavy                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
