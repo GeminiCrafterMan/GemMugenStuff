@@ -960,7 +960,7 @@ priority = 3, Hit                ;Attack priority: 0 (least) to 7 (most), 4 defa
 ;Hit/Miss/Dodge type (Def: Hit)
 pausetime = 8, 8                 ;Time attacker pauses, time opponent shakes
 sparkno = 0                      ;Spark anim no (Def: set above)
-sparkxy = -10, -76               ;X-offset for the "hit spark" rel. to p2,
+sparkxy = -10,-15
 ;Y-offset for the spark rel. to p1
 hitsound = 5, 0                  ;Sound to play on hit
 guardsound = 6, 0                ;Sound to play on guard
@@ -995,15 +995,15 @@ poweradd = 23
 type = HitDef
 trigger1 = AnimElem = 9
 attr = S, NA                     ;Attribute: Standing, Normal Attack
-damage = 46, 0                   ;Damage that move inflicts, guard damage
+damage = 46, 15                   ;Damage that move inflicts, guard damage
 animtype = Medium                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = MA                   ;Flags on how move is to be guarded against
 hitflag = MAF                    ;Flags of conditions that move can hit
 priority = 3, Hit                ;Attack priority: 0 (least) to 7 (most), 4 default
 ;Hit/Miss/Dodge type (Def: Hit)
 pausetime = 8, 8                 ;Time attacker pauses, time opponent shakes
-sparkno = 0                      ;Spark anim no (Def: set above)
-sparkxy = -10, -76               ;X-offset for the "hit spark" rel. to p2,
+sparkno = 1                      ;Spark anim no (Def: set above)
+sparkxy = -10,-15
 ;Y-offset for the spark rel. to p1
 hitsound = 5, 0                  ;Sound to play on hit
 guardsound = 6, 0                ;Sound to play on guard
@@ -1038,15 +1038,15 @@ poweradd = 23
 type = HitDef
 trigger1 = AnimElem = 14
 attr = S, NA                     ;Attribute: Standing, Normal Attack
-damage = 69, 0                   ;Damage that move inflicts, guard damage
+damage = 69, 23                   ;Damage that move inflicts, guard damage
 animtype = Heavy                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = MA                   ;Flags on how move is to be guarded against
 hitflag = MAF                    ;Flags of conditions that move can hit
 priority = 3, Hit                ;Attack priority: 0 (least) to 7 (most), 4 default
 ;Hit/Miss/Dodge type (Def: Hit)
 pausetime = 8, 8                 ;Time attacker pauses, time opponent shakes
-sparkno = 0                      ;Spark anim no (Def: set above)
-sparkxy = -10, -76               ;X-offset for the "hit spark" rel. to p2,
+sparkno = 2                      ;Spark anim no (Def: set above)
+sparkxy = -10,-15
 ;Y-offset for the spark rel. to p1
 hitsound = 5, 0                  ;Sound to play on hit
 guardsound = 6, 0                ;Sound to play on guard
