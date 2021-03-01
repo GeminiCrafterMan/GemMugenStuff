@@ -3,7 +3,7 @@
 [Info]
 name         = "UltiRe Sonic"   ; Name of character
 displayname  = "Sonic (Ultimate Rebirth)"  ; Name of character to display
-versiondate  = 02,23,2021           ; Version date of character (MM,DD,YYYY or X.XX)
+versiondate  = 03,01,2021           ; Version date of character (MM,DD,YYYY or X.XX)
 mugenversion = 1.0           ; Version of M.U.G.E.N. character works on (X.XX)
 author       = "Gemini0"   ; Character author name
 pal.defaults = 1,2,3,4,5,6   ; Default palettes in order of preference (up to 4, starts from 1)
@@ -14,6 +14,7 @@ localcoord   = 320,240       ; Local coordinate space (width, height) who cares 
 cmd      = URSonic.cmd          ; Command set
 cns      = URSonic.cns          ; Constants
 st       = URSonic.st          ; States
+st2      = Attacks.st	 ; Attacks
 stcommon = common1.cns       ; Common states (from data or motif)
 sprite   = URSonic.sff          ; Sprite... Align to the grid lines like you do with Flex 2, then move UP by 19 pixels.
 anim     = URSonic.air          ; Animation

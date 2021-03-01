@@ -358,3 +358,14 @@ value = 202
 trigger1 = command = "z"
 trigger1 = statetype = S
 trigger1 = ctrl
+
+;---------------------------------------------------------------------------
+; Stomp
+[State -1, Stomp]
+type = ChangeState
+value = 550
+triggerall = statetype = A
+triggerall = ctrl
+trigger1 = command = "x"
+trigger2 = command = "y"
+trigger3 = command = "z"

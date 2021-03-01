@@ -396,5 +396,83 @@ Clsn2Default: 1
 
 ; Hit back while guarding (stand)
 [Begin Action 150]
+Clsn2Default: 1
+  Clsn2[0] = -8, -35, 8, -3
 17,1, 0,0, 1
+
+; Ouch! That looks like it hurt
+[Begin Action 5160]
+Clsn2Default: 1
+  Clsn2[0] = -8, -50, 8, -28
+19,0, 0,-20, -1
+
+
+; Ouch! That looks like it hurt
+[Begin Action 5170]
+Clsn2Default: 1
+  Clsn2[0] = -8, -30, 8, -8
+22,0, 0,0, 3
+
+
+; Ouch! That looks like it hurt
+[Begin Action 5050]
+Clsn2Default: 1
+  Clsn2[0] = -8, -30, 8, -8
+19,0, 0,0, 5
+19,1, 0,0, 5
+
+; Tripped
+[Begin Action 5070]
+Clsn2Default: 1
+  Clsn2[0] = -8, -35, 8, -3
+23,0, 0,0, 2
+23,1, 0,0, 2
+23,2, 0,0, 2
+Clsn2Default: 1
+  Clsn2[0] = -8, -30, 8, -8
+23,3, 0,0, 2
+19,0, 0,0, 2
+19,1, 0,0, -1
+
+
+[Begin Action 5010]
+Clsn2Default: 1
+  Clsn2[0] = -8, -35, 8, -3
+21,1, 0,0, 5
+21,0, 0,0, 5
+
+
+[Begin Action 5011]
+Clsn2Default: 1
+  Clsn2[0] = -8, -35, 8, -3
+21,0, 0,0, 5
+21,1, 0,0, 5
+
+
+[Begin Action 5012]
+Clsn2Default: 1
+  Clsn2[0] = -8, -35, 8, -3
+21,0, 0,0, 2
+21,1, 0,0, 5
+
+
+; Falling
+[Begin Action 24]
+Clsn2Default: 1
+  Clsn2[0] = -8, -35, 8, -3
+24,0, 0,0, 4
+LoopStart
+24,1, 0,0, 4
+24,2, 0,0, 4
+
+; Stomp
+[Begin Action 25]
+Clsn2Default: 1
+  Clsn2[0] = -8, -35, 8, -3
+Clsn1Default: 1
+  Clsn1[0] = -8, -11, 8, -3
+24,0, 0,0, 4
+LoopStart
+24,1, 0,0, 4
+24,2, 0,0, 4
 
