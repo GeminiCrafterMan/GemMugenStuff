@@ -324,6 +324,15 @@ trigger1 = statetype = S
 trigger1 = ctrl
 
 ;---------------------------------------------------------------------------
+; Taunt
+[State -1, Taunt]
+type = ChangeState
+value = 196
+triggerall = command = "s"
+trigger1 = statetype != A
+trigger1 = ctrl
+
+;---------------------------------------------------------------------------
 ; Punch L
 [State -1, Punch L]
 type = ChangeState

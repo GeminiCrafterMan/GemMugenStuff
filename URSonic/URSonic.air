@@ -349,16 +349,52 @@ Clsn2Default: 1
 17,1, 0,0, 1
 
 
-; Sonic fell into the void
-[Begin Action 5000]
-Clsn2Default: 1
-  Clsn2[0] = -8, -30, 8, -8
-19,0, 0,0, 4
-19,1, 0,0, 4
-
 ; Ouch! That looks like it hurt
 [Begin Action 5030]
 Clsn2Default: 1
   Clsn2[0] = -8, -30, 8, -8
 19,0, 0,0, 5
+
+
+; Taunt
+[Begin Action 1]
+Clsn2Default: 1
+  Clsn2[0] = -8, -35, 8, -3
+20,0, 0,0, 6
+20,1, 0,0, 6
+20,2, 0,0, 6
+20,3, 0,0, 6
+20,4, 0,0, 6
+20,3, 0,0, 6
+20,4, 0,0, 6
+20,3, 0,0, 6
+20,4, 0,0, 6
+20,3, 0,0, 6
+20,2, 0,0, 6
+20,1, 0,0, 6
+20,0, 0,0, 6
+
+
+[Begin Action 5000]
+Clsn2Default: 1
+  Clsn2[0] = -8, -35, 8, -3
+21,1, 0,0, 5
+
+
+[Begin Action 5001]
+Clsn2Default: 1
+  Clsn2[0] = -8, -35, 8, -3
+21,1, 0,0, 5
+
+
+[Begin Action 5002]
+Clsn2Default: 1
+  Clsn2[0] = -8, -35, 8, -3
+21,0, 0,0, 2
+21,1, 0,0, 5
+
+
+; Hit back while guarding (stand)
+[Begin Action 150]
+17,1, 0,0, 1
 

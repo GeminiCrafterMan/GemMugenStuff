@@ -937,6 +937,28 @@ value = 0,7
 type = ChangeState
 trigger1 = AnimTime = 187
 value = 0
+
+;---------------------------------------------------------------------------
+; Taunt
+[Statedef 196]
+type = S
+ctrl = 0
+anim = 1
+velset = 0,0
+movetype = I
+physics = S
+
+[state -2, taunt]
+type = playsnd
+trigger1 = animelem = 4
+value = 0, 8
+
+[State 196, 1]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
 ;---------------------------------------------------------------------------
 ; Punch L
 [Statedef 200]
