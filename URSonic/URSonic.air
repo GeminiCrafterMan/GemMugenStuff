@@ -250,6 +250,10 @@ Clsn2Default: 1
 
 ; Ball!
 [Begin Action 1234]
+Clsn2Default: 1
+  Clsn2[0] = -20, -40, 20, 0
+Clsn1Default: 1
+  Clsn1[0] = -20, -40, 20, 0
 14,1, 0,0, 2
 14,2, 0,0, 2
 14,3, 0,0, 2
