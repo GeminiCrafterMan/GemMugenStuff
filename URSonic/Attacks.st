@@ -150,7 +150,7 @@ trigger1 = AnimElem = 1
 type = Velset
 trigger1 = AnimElem = 1
 x = 0
-y = 5
+y = 7
 
 [State 550, 2]
 type = HitDef
