@@ -24,7 +24,7 @@ trigger1 = Var(54) <= 0
 trigger1 = AnimTime = 0
 trigger2 = Var(54) > 0
 trigger2 = AnimElem = 5, > 0
-value = 0
+value = 9995
 ctrl = 1
 
 ;---------------------------------------------------------------------------

@@ -1014,7 +1014,7 @@ value = 2
 [State 0, 1]
 type = ChangeAnim
 triggerall = Var(54) > 0
-trigger1 = Anim = 9996 ; standing up
+trigger1 = Anim = 9995 ; standing up
 ;trigger2 = Anim = 196 ; powerup
 trigger3 = Anim = 25 ; fwd up
 trigger4 = Anim = 26 ; back up
