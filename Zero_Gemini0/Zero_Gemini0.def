@@ -6,7 +6,7 @@
 [Info]
 name = "Zero (Gemini0 Edit)"
 displayname = "Zero"
-versiondate = 15,02,2021
+versiondate = 24,04,2021
 mugenversion = 1.0
 author = "Gemini0" ; original authors: Ariel AleX Co. & RedLine
 pal.defaults = 1,9,8 ; normal / omega / nightmare
@@ -20,15 +20,11 @@ cns = zero.cns
 stcommon = common1.cns
 st = zero.cns
 st2 = Zero-Buster.cns
-;st3 = config.txt
 st4 = OZero Taunt.cns
-;st5 = Ranbu Fuckery.cns
-;st6 = stand_normal.cns
-;st7 = Stand.cns
 st8 = Aura Bullshit.cns
 movelist = movelist.dat     ;Ikemen feature: Movelist
 
-pal1 = act/Original Palettes/ZeroALL.act
+pal1 = act/ZeroALL.act
 pal2 = act/MvC3/Bass.act
 pal3 = act/MvC3/Axl.act
 pal4 = act/MvC3/MegaManZero.act

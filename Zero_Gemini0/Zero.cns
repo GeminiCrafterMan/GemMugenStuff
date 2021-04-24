@@ -197,6 +197,7 @@ type = S
 [state 180,0]
 type = ChangeState
 trigger1 = palno = 9
+trigger2 = palno = 2
 value = 3456
 
 [state 180,1]
@@ -289,7 +290,7 @@ flag = nomusic
 type = screenbound
 trigger1 = 1
 value = 1
-movecamera = 1
+movecamera = 1,0
 
 [state a]
 type = changeanim
@@ -379,7 +380,7 @@ flag = nomusic
 type = screenbound
 trigger1 = 1
 value = 1
-movecamera = 1
+movecamera = 1,0
 
 [state a]
 type = changeanim
@@ -458,7 +459,7 @@ flag = nomusic
 type = screenbound
 trigger1 = 1
 value = 1
-movecamera = 1
+movecamera = 1,0
 
 [state a]
 type = changeanim
@@ -537,7 +538,7 @@ flag = nomusic
 type = screenbound
 trigger1 = 1
 value = 1
-movecamera = 1
+movecamera = 1,0
 
 [state a]
 type = changeanim
@@ -613,6 +614,13 @@ trigger1 = palno = 9
 trigger1 = Anim = 1236
 trigger1 = AnimElem = 3
 value = 345, 0
+
+[state 3456, 0]
+type = playsnd
+trigger1 = palno = 2
+trigger1 = Anim = 1236
+trigger1 = AnimElem = 3
+value = 77, 38
 
 [State 3456, 0]
 type = VarSet

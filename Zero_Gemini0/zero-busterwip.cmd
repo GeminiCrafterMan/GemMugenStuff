@@ -1402,7 +1402,7 @@ trigger1 = var(20) = 0
 [State -1]
 type = ChangeState
 value = 6016
-triggerall = var(1) = 1	 ;orig 1, set to 2 because fuck you i'm too lazy to code the rest right now.
+triggerall = var(1) = 1
 triggerall = numhelper(6011) < 3
 triggerall = command = "a"
 triggerall = ctrl
