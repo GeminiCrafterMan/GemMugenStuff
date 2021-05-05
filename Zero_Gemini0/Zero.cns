@@ -1021,7 +1021,7 @@ value = 2
 
 [State 0, 1]
 type = ChangeAnim
-triggerall = Var(54) > 0
+triggerall = Var(57) > 0
 trigger1 = Anim = 9995 ; standing up
 ;trigger2 = Anim = 196 ; powerup
 trigger3 = Anim = 25 ; fwd up
@@ -1311,6 +1311,7 @@ value = 0
 [State 20, 1]
 type = VelSet
 triggerall = Var(54) <= 0
+triggerall = Var(57) = 0
 trigger1 = command = "holdfwd"
 trigger1 = Anim != 5
 x = const(velocity.walk.fwd.x)
@@ -1318,6 +1319,7 @@ x = const(velocity.walk.fwd.x)
 [State 20, 2]
 type = VelSet
 triggerall = Var(54) <= 0
+triggerall = Var(57) = 0
 trigger1 = command = "holdback"
 trigger1 = Anim != 5
 x = const(velocity.walk.back.x)
@@ -1325,6 +1327,7 @@ x = const(velocity.walk.back.x)
 [State 20, 4]
 type = ChangeAnim
 triggerall = Var(54) <= 0
+triggerall = Var(57) = 0
 triggerall = command = "holdfwd"
 trigger1 = Anim != 20
 value = 20
@@ -1332,9 +1335,42 @@ value = 20
 [State 20, 5]
 type = ChangeAnim
 triggerall = Var(54) <= 0
+triggerall = Var(57) = 0
 triggerall = command = "holdback"
 trigger1 = Anim != 21
 value = 21
+
+[State 20, 1]
+type = VelSet
+triggerall = Var(54) <= 0
+triggerall = Var(57) = 1
+trigger1 = command = "holdfwd"
+trigger1 = Anim != 5
+x = (const(velocity.walk.fwd.x))/2
+
+[State 20, 2]
+type = VelSet
+triggerall = Var(54) <= 0
+triggerall = Var(57) = 1
+trigger1 = command = "holdback"
+trigger1 = Anim != 5
+x = (const(velocity.walk.back.x))/2
+
+[State 20, 4]
+type = ChangeAnim
+triggerall = Var(54) <= 0
+triggerall = Var(57) = 1
+triggerall = command = "holdfwd"
+trigger1 = Anim != 25
+value = 25
+
+[State 20, 5]
+type = ChangeAnim
+triggerall = Var(54) <= 0
+triggerall = Var(57) = 1
+triggerall = command = "holdback"
+trigger1 = Anim != 26
+value = 26
 
 [State 20, 1]
 type = VelSet

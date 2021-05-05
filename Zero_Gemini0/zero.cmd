@@ -1574,7 +1574,7 @@ type = ChangeState
 value = 9995
 triggerall = palno = 9
 triggerall = Var(55) <= 0
-triggerall = Var(54) <= 0
+triggerall = Var(57) <= 0
 triggerall = Var(20) >= 0
 triggerall = command = "s"
 trigger1 = statetype != A
@@ -1586,7 +1586,7 @@ type = ChangeState
 value = 9994
 triggerall = palno = 9
 triggerall = Var(55) <= 0
-triggerall = Var(54) > 0
+triggerall = Var(57) > 0
 triggerall = Var(20) >= 0
 triggerall = command = "s"
 trigger1 = statetype != A

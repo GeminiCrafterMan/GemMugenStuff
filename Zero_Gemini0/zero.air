@@ -4486,19 +4486,19 @@ LoopStart
 195,0, 0,0, 4
 
 ;--------------------------------------------------
-; Stand Filler
+; Stand (back to normal)
 [Begin Action 9996]
-Clsn2Default: 1
-  Clsn2[0] = -16, -44, 16, 0
-0,0, 0,0, 3
 Clsn2Default: 1
   Clsn2[0] = -16, -50, 16, 4
 195,0, 0,0, 4
 195,1, 0,0, 4
 195,2, 0,0, 4
 195,1, 0,0, 4
-LoopStart
 195,0, 0,0, 4
+LoopStart
+Clsn2Default: 1
+  Clsn2[0] = -16, -44, 16, 0
+0,0, 0,0, 3
 
 ;--------------------------------------------------
 ; Walk Forwards Upright
